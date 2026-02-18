@@ -1,0 +1,2936 @@
+{
+  "numPages": 1,
+  "pages": [
+    {
+      "pageNum": 1,
+      "width": 595.276,
+      "height": 841.89,
+      "items": [
+        {
+          "idx": 0,
+          "str": "HITESH SURYA THEJASWI M",
+          "fontName": "g_d0_f1",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 282.22410298000005,
+          "height": 17.2154,
+          "transform": [
+            17.2154,
+            0,
+            0,
+            17.2154,
+            156.527,
+            794.078
+          ]
+        },
+        {
+          "idx": 1,
+          "str": "",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            132.43699999999998,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 2,
+          "str": "+91 9353134049",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 70.84205607999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            132.43699999999998,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 3,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            203.27905608000003,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 4,
+          "str": "|",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 2.76761028,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            206.60656448000003,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 5,
+          "str": " ",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            209.37417476000005,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 6,
+          "str": "hiteshsurya018@gmail.com",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 116.36715304,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            212.69172056000005,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 7,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            329.05887359999986,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 8,
+          "str": "|",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 2.76761028,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            332.38638199999986,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 9,
+          "str": " ",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            335.15399227999984,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 10,
+          "str": "+",
+          "fontName": "g_d0_f4",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 7.4719500000000005,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            338.47153807999985,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 11,
+          "str": " ",
+          "fontName": "g_d0_f4",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            345.94348807999984,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 12,
+          "str": "Mysuru, Karnataka, India",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 113.57662878000004,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            349.26103387999984,
+            778.1379999999999
+          ]
+        },
+        {
+          "idx": 13,
+          "str": "GitHub",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 33.00210876,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            233.524,
+            763.194
+          ]
+        },
+        {
+          "idx": 14,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            266.52610876000006,
+            763.194
+          ]
+        },
+        {
+          "idx": 15,
+          "str": "|",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 2.76761028,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            269.84365456000006,
+            763.194
+          ]
+        },
+        {
+          "idx": 16,
+          "str": " ",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            272.61126484000005,
+            763.194
+          ]
+        },
+        {
+          "idx": 17,
+          "str": "LinkedIn",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 38.604078739999984,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            275.93877324000005,
+            763.194
+          ]
+        },
+        {
+          "idx": 18,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            314.5428519800001,
+            763.194
+          ]
+        },
+        {
+          "idx": 19,
+          "str": "|",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 2.76761028,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            317.8603977800001,
+            763.194
+          ]
+        },
+        {
+          "idx": 20,
+          "str": " ",
+          "fontName": "g_d0_f3",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            320.62800806000007,
+            763.194
+          ]
+        },
+        {
+          "idx": 21,
+          "str": "Portfolio",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 37.80208943999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            323.9455538600001,
+            763.194
+          ]
+        },
+        {
+          "idx": 22,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            732.379
+          ]
+        },
+        {
+          "idx": 23,
+          "str": "PROFESSIONAL SUMMARY",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 155.35578814000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            732.379
+          ]
+        },
+        {
+          "idx": 24,
+          "str": "",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            717.366
+          ]
+        },
+        {
+          "idx": 25,
+          "str": "B.E. Information Science student and software engineer building smart and scalable full-stack solutions that turn complex",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 523.2726136199998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            717.366
+          ]
+        },
+        {
+          "idx": 26,
+          "str": "ideas into intuitive digital products.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 156.49252080000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            705.411
+          ]
+        },
+        {
+          "idx": 27,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            684.558
+          ]
+        },
+        {
+          "idx": 28,
+          "str": "EDUCATION",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 70.99548012000001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            684.558
+          ]
+        },
+        {
+          "idx": 29,
+          "str": "B.E. — Information Science and Engineering",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 226.66509016,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            669.545
+          ]
+        },
+        {
+          "idx": 30,
+          "str": ", Maharaja Institute of Technology, Mysore",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 189.4507941200001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            262.66509016000003,
+            669.545
+          ]
+        },
+        {
+          "idx": 31,
+          "str": "CGPA: 8.0 (expected)",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 96.51169123999998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            657.5899999999999
+          ]
+        },
+        {
+          "idx": 32,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            643.6419999999999
+          ]
+        },
+        {
+          "idx": 33,
+          "str": "Pre-University Course (PUC)",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 149.89130204000003,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            643.6419999999999
+          ]
+        },
+        {
+          "idx": 34,
+          "str": ", Sharadha Vidya Mandir, Mysore — 78%",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 183.89564836000005,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            185.89130204000003,
+            643.6419999999999
+          ]
+        },
+        {
+          "idx": 35,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            629.694
+          ]
+        },
+        {
+          "idx": 36,
+          "str": "Secondary (CBSE)",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 94.545074,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            629.694
+          ]
+        },
+        {
+          "idx": 37,
+          "str": ", DAV Public School, Mysore — 72%",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 162.52985640000003,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            130.545074,
+            629.694
+          ]
+        },
+        {
+          "idx": 38,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            608.842
+          ]
+        },
+        {
+          "idx": 39,
+          "str": "TECHNICAL SKILLS",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 113.53080082,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            608.842
+          ]
+        },
+        {
+          "idx": 40,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            593.829
+          ]
+        },
+        {
+          "idx": 41,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            593.829
+          ]
+        },
+        {
+          "idx": 42,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            593.829
+          ]
+        },
+        {
+          "idx": 43,
+          "str": "Programming Languages:",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 127.64880127999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            593.829
+          ]
+        },
+        {
+          "idx": 44,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 4.433357000000001,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            173.61040501999997,
+            593.829
+          ]
+        },
+        {
+          "idx": 45,
+          "str": "JavaScript, Python, C",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 96.88628499999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            178.04376201999997,
+            593.829
+          ]
+        },
+        {
+          "idx": 46,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            579.881
+          ]
+        },
+        {
+          "idx": 47,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            579.881
+          ]
+        },
+        {
+          "idx": 48,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            579.881
+          ]
+        },
+        {
+          "idx": 49,
+          "str": "Frontend Technologies:",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 115.27824086,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            579.881
+          ]
+        },
+        {
+          "idx": 50,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 4.4233944000000065,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            161.2398446,
+            579.881
+          ]
+        },
+        {
+          "idx": 51,
+          "str": "React, HTML, CSS, Next.js, Three.js",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 163.69846938000006,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            165.663239,
+            579.881
+          ]
+        },
+        {
+          "idx": 52,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            565.934
+          ]
+        },
+        {
+          "idx": 53,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            565.934
+          ]
+        },
+        {
+          "idx": 54,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            565.934
+          ]
+        },
+        {
+          "idx": 55,
+          "str": "Backend Technologies:",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 112.29743093999997,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            565.934
+          ]
+        },
+        {
+          "idx": 56,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 4.4233944000000065,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            158.25903467999998,
+            565.934
+          ]
+        },
+        {
+          "idx": 57,
+          "str": "Node.js, Express.js, MongoDB",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 132.38900636000005,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            162.68242908,
+            565.934
+          ]
+        },
+        {
+          "idx": 58,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            551.986
+          ]
+        },
+        {
+          "idx": 59,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            551.986
+          ]
+        },
+        {
+          "idx": 60,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            551.986
+          ]
+        },
+        {
+          "idx": 61,
+          "str": "AI/ML:",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 39.684024580000006,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            551.986
+          ]
+        },
+        {
+          "idx": 62,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            85.64562831999999,
+            551.986
+          ]
+        },
+        {
+          "idx": 63,
+          "str": "YOLOv5, NLP, Machine Learning, Computer Vision",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 230.08923578000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            88.96317411999999,
+            551.986
+          ]
+        },
+        {
+          "idx": 64,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            538.038
+          ]
+        },
+        {
+          "idx": 65,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            538.038
+          ]
+        },
+        {
+          "idx": 66,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            538.038
+          ]
+        },
+        {
+          "idx": 67,
+          "str": "Tools:",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 29.672607839999998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            538.038
+          ]
+        },
+        {
+          "idx": 68,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 4.433357000000001,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            75.63421158,
+            538.038
+          ]
+        },
+        {
+          "idx": 69,
+          "str": "Git, GitHub",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 53.546982480000004,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            80.06756858,
+            538.038
+          ]
+        },
+        {
+          "idx": 70,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            517.186
+          ]
+        },
+        {
+          "idx": 71,
+          "str": "PROJECTS",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 60.771860000000004,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            517.186
+          ]
+        },
+        {
+          "idx": 72,
+          "str": "3D Virtual Garden Builder",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 136.59621234000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            499.184
+          ]
+        },
+        {
+          "idx": 73,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 146.80887360000003,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            172.59621234000002,
+            499.184
+          ]
+        },
+        {
+          "idx": 74,
+          "str": "React, Three.js, YOLOv5, Node.js, Express, MongoDB",
+          "fontName": "g_d0_f7",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 238.84835369999996,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            319.40508594000005,
+            499.184
+          ]
+        },
+        {
+          "idx": 75,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            487.22900000000004
+          ]
+        },
+        {
+          "idx": 76,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            487.22900000000004
+          ]
+        },
+        {
+          "idx": 77,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            487.22900000000004
+          ]
+        },
+        {
+          "idx": 78,
+          "str": "Developed a 3D virtual garden builder enabling users to upload real garden images, detect medicinal plants with 95%+",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 513.3139986599998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            487.22900000000004
+          ]
+        },
+        {
+          "idx": 79,
+          "str": "accuracy using YOLOv5, and visualize them in an interactive React + Three.js environment.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 407.08777616000003,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961,
+            475.27400000000006
+          ]
+        },
+        {
+          "idx": 80,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            461.3260000000001
+          ]
+        },
+        {
+          "idx": 81,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            461.3260000000001
+          ]
+        },
+        {
+          "idx": 82,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            461.3260000000001
+          ]
+        },
+        {
+          "idx": 83,
+          "str": "Built drag-and-drop layout and snap-to-grid features, improving placement speed by 60%.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 393.14013616,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            461.3260000000001
+          ]
+        },
+        {
+          "idx": 84,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            447.3780000000001
+          ]
+        },
+        {
+          "idx": 85,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            447.3780000000001
+          ]
+        },
+        {
+          "idx": 86,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            447.3780000000001
+          ]
+        },
+        {
+          "idx": 87,
+          "str": "Engineered Node.js + Express backend with MongoDB to persist user layouts and detection metadata.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 449.92894867999996,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            447.3780000000001
+          ]
+        },
+        {
+          "idx": 88,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            433.4300000000001
+          ]
+        },
+        {
+          "idx": 89,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            433.4300000000001
+          ]
+        },
+        {
+          "idx": 90,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            433.4300000000001
+          ]
+        },
+        {
+          "idx": 91,
+          "str": "Enhanced plant detection with AI-powered medicinal insights, reducing manual lookup time by 40%.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 440.87095276,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            433.4300000000001
+          ]
+        },
+        {
+          "idx": 92,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            415.4980000000001
+          ]
+        },
+        {
+          "idx": 93,
+          "str": "Cryptex Chat — AES-Based Text and File Encryption",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 275.98195268,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            415.4980000000001
+          ]
+        },
+        {
+          "idx": 94,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 58.63986360000001,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            311.98195268,
+            415.4980000000001
+          ]
+        },
+        {
+          "idx": 95,
+          "str": "React, JavaScript, AES (Web Crypto API)",
+          "fontName": "g_d0_f7",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 188.28516991999996,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            370.62181628,
+            415.4980000000001
+          ]
+        },
+        {
+          "idx": 96,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            403.5430000000001
+          ]
+        },
+        {
+          "idx": 97,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            403.5430000000001
+          ]
+        },
+        {
+          "idx": 98,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            403.5430000000001
+          ]
+        },
+        {
+          "idx": 99,
+          "str": "Implemented a client-side AES-based encryption and decryption system for securely processing text messages and",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 513.3120061399998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            403.5430000000001
+          ]
+        },
+        {
+          "idx": 100,
+          "str": "user-uploaded files directly in the browser.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 185.14196962000008,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961,
+            391.5870000000001
+          ]
+        },
+        {
+          "idx": 101,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            377.6400000000001
+          ]
+        },
+        {
+          "idx": 102,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            377.6400000000001
+          ]
+        },
+        {
+          "idx": 103,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            377.6400000000001
+          ]
+        },
+        {
+          "idx": 104,
+          "str": "Built interactive React components to handle encryption workflows and encrypted output rendering.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 439.1862771000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            377.6400000000001
+          ]
+        },
+        {
+          "idx": 105,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            363.6920000000001
+          ]
+        },
+        {
+          "idx": 106,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            363.6920000000001
+          ]
+        },
+        {
+          "idx": 107,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            363.6920000000001
+          ]
+        },
+        {
+          "idx": 108,
+          "str": "Enabled secure handling of multiple data types using browser-native cryptography.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 361.9213328000001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            363.6920000000001
+          ]
+        },
+        {
+          "idx": 109,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            345.7590000000001
+          ]
+        },
+        {
+          "idx": 110,
+          "str": "AI Medical Chatbot",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 101.69722454000001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            345.7590000000001
+          ]
+        },
+        {
+          "idx": 111,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 277.906727,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            137.69722454000004,
+            345.7590000000001
+          ]
+        },
+        {
+          "idx": 112,
+          "str": "Python, NLP, Machine Learning",
+          "fontName": "g_d0_f7",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 142.78996075999993,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            415.60395154,
+            345.7590000000001
+          ]
+        },
+        {
+          "idx": 113,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            333.80400000000014
+          ]
+        },
+        {
+          "idx": 114,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            333.80400000000014
+          ]
+        },
+        {
+          "idx": 115,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            333.80400000000014
+          ]
+        },
+        {
+          "idx": 116,
+          "str": "Created an offline-friendly NLP chatbot trained on a 5,000+ entry medical dataset delivering 90%+ intent classification",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 513.3120061399998,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            333.80400000000014
+          ]
+        },
+        {
+          "idx": 117,
+          "str": "accuracy.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 39.88128406,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961,
+            321.84900000000016
+          ]
+        },
+        {
+          "idx": 118,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            307.9010000000002
+          ]
+        },
+        {
+          "idx": 119,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            307.9010000000002
+          ]
+        },
+        {
+          "idx": 120,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            307.9010000000002
+          ]
+        },
+        {
+          "idx": 121,
+          "str": "Implemented preprocessing, intent handling, and custom response logic in Python.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 360.53852392000005,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            307.9010000000002
+          ]
+        },
+        {
+          "idx": 122,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            293.9530000000002
+          ]
+        },
+        {
+          "idx": 123,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            293.9530000000002
+          ]
+        },
+        {
+          "idx": 124,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            293.9530000000002
+          ]
+        },
+        {
+          "idx": 125,
+          "str": "Assisted 300+ health queries during testing.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 192.9476667200001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            293.9530000000002
+          ]
+        },
+        {
+          "idx": 126,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            272.902
+          ]
+        },
+        {
+          "idx": 127,
+          "str": "CERTIFICATIONS",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 99.54032164,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            272.902
+          ]
+        },
+        {
+          "idx": 128,
+          "str": "Generative AI Workshop",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 125.78579508,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            257.889
+          ]
+        },
+        {
+          "idx": 129,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            161.78579508000004,
+            257.889
+          ]
+        },
+        {
+          "idx": 130,
+          "str": "— IIT Hyderabad",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 78.90478825999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            165.10334088000005,
+            257.889
+          ]
+        },
+        {
+          "idx": 131,
+          "str": "Attended a 2-day intensive workshop focused on generative AI concepts, prompt engineering, and LLM applications.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 509.30903345999997,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            245.934
+          ]
+        },
+        {
+          "idx": 132,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            228.001
+          ]
+        },
+        {
+          "idx": 133,
+          "str": "Hackathon Coordinator (Volunteer)",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 179.60774532000002,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            228.001
+          ]
+        },
+        {
+          "idx": 134,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            215.60774532000005,
+            228.001
+          ]
+        },
+        {
+          "idx": 135,
+          "str": "— Hackfinity, Hackverse",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 106.62572275999997,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            218.93525372000005,
+            228.001
+          ]
+        },
+        {
+          "idx": 136,
+          "str": "Coordinated registration, logistics, and team communications; facilitated mentorship and schedules.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 435.25503514,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            216.046
+          ]
+        },
+        {
+          "idx": 137,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            198.113
+          ]
+        },
+        {
+          "idx": 138,
+          "str": "Hackathon Participant (Multiple Events)",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 206.11125010000006,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            198.113
+          ]
+        },
+        {
+          "idx": 139,
+          "str": " ",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            242.11125010000006,
+            198.113
+          ]
+        },
+        {
+          "idx": 140,
+          "str": "— Hack 4 Mysore, Prahyatha’24, Invaders",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 184.91980364000008,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            245.42879590000007,
+            198.113
+          ]
+        },
+        {
+          "idx": 141,
+          "str": "Participated in city-level and campus hackathons focused on rapid prototyping and problem solving.",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 438.27768798000005,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            186.158
+          ]
+        },
+        {
+          "idx": 142,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            168.225
+          ]
+        },
+        {
+          "idx": 143,
+          "str": "Technical Certifications",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 117.77686094000003,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            168.225
+          ]
+        },
+        {
+          "idx": 144,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            156.26999999999998
+          ]
+        },
+        {
+          "idx": 145,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            156.26999999999998
+          ]
+        },
+        {
+          "idx": 146,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            156.26999999999998
+          ]
+        },
+        {
+          "idx": 147,
+          "str": "Cisco Python Essentials 1",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 112.85234776000001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            156.26999999999998
+          ]
+        },
+        {
+          "idx": 148,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            142.32199999999997
+          ]
+        },
+        {
+          "idx": 149,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            142.32199999999997
+          ]
+        },
+        {
+          "idx": 150,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            142.32199999999997
+          ]
+        },
+        {
+          "idx": 151,
+          "str": "Microsoft Power BI",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 84.78969608,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            142.32199999999997
+          ]
+        },
+        {
+          "idx": 152,
+          "str": "",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            128.37399999999997
+          ]
+        },
+        {
+          "idx": 153,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            128.37399999999997
+          ]
+        },
+        {
+          "idx": 154,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.981299999999997,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            40.98030374,
+            128.37399999999997
+          ]
+        },
+        {
+          "idx": 155,
+          "str": "Next-Gen AI Tools Workshop — Google Developer Student Club",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 285.21130532000024,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            45.961603739999994,
+            128.37399999999997
+          ]
+        },
+        {
+          "idx": 156,
+          "str": "",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            107.522
+          ]
+        },
+        {
+          "idx": 157,
+          "str": "LANGUAGES",
+          "fontName": "g_d0_f5",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 73.58475986,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            38.989,
+            107.522
+          ]
+        },
+        {
+          "idx": 158,
+          "str": "",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 0,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            92.509
+          ]
+        },
+        {
+          "idx": 159,
+          "str": "English",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 32.29675668,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            36,
+            92.509
+          ]
+        },
+        {
+          "idx": 160,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            68.29675668,
+            92.509
+          ]
+        },
+        {
+          "idx": 161,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            71.61430248,
+            92.509
+          ]
+        },
+        {
+          "idx": 162,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            76.59460622,
+            92.509
+          ]
+        },
+        {
+          "idx": 163,
+          "str": "Kannada (Native)",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 78.86693037999999,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            79.92211462,
+            92.509
+          ]
+        },
+        {
+          "idx": 164,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            158.78904500000004,
+            92.509
+          ]
+        },
+        {
+          "idx": 165,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            162.10659080000005,
+            92.509
+          ]
+        },
+        {
+          "idx": 166,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.3275083999999993,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            167.08689454000006,
+            92.509
+          ]
+        },
+        {
+          "idx": 167,
+          "str": "Hindi",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 24.07761168,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            170.41440294000006,
+            92.509
+          ]
+        },
+        {
+          "idx": 168,
+          "str": " ",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            194.49201462000008,
+            92.509
+          ]
+        },
+        {
+          "idx": 169,
+          "str": "•",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 4.98030374,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            197.80956042000008,
+            92.509
+          ]
+        },
+        {
+          "idx": 170,
+          "str": " ",
+          "fontName": "g_d0_f6",
+          "fontFamily": "monospace",
+          "fontStyle": null,
+          "width": 3.317545800000005,
+          "height": 0,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            202.7898641600001,
+            92.509
+          ]
+        },
+        {
+          "idx": 171,
+          "str": "German (Learning)",
+          "fontName": "g_d0_f2",
+          "fontFamily": "sans-serif",
+          "fontStyle": null,
+          "width": 84.38919956000001,
+          "height": 9.9626,
+          "transform": [
+            9.9626,
+            0,
+            0,
+            9.9626,
+            206.1074099600001,
+            92.509
+          ]
+        }
+      ]
+    }
+  ]
+}

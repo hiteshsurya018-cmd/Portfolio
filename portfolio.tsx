@@ -3,12 +3,25 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
+import emailjs from "@emailjs/browser"
 
 export default function Portfolio() {
+  const emailjsConfigured = Boolean(
+    process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID &&
+      process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID &&
+      process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+  )
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
+    message: "",
+  })
+  const [submitState, setSubmitState] = useState<{
+    status: "idle" | "sending" | "sent" | "error"
+    message: string
+  }>({
+    status: "idle",
     message: "",
   })
 
@@ -21,14 +34,44 @@ export default function Portfolio() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!formData.name || !formData.email || !formData.subject || !formData.message) {
       alert("Please fill in all fields")
       return
     }
-    alert("Thank you for your message! I'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
+    setSubmitState({ status: "sending", message: "Sending your message..." })
+    try {
+      const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
+      const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("Email service not configured")
+      }
+
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        { publicKey }
+      )
+
+      setSubmitState({ status: "sent", message: "Message sent. I'll get back to you soon." })
+      setFormData({ name: "", email: "", subject: "", message: "" })
+    } catch (error) {
+      const message =
+        typeof error === "object" && error !== null && "text" in error
+          ? String((error as { text?: string }).text || "Failed to send. Please try again in a moment.")
+          : "Failed to send. Please try again in a moment."
+      console.error("EmailJS send failed:", error)
+      setSubmitState({ status: "error", message })
+    }
   }
 
   const scrollToSection = (sectionId: string) => {
@@ -44,6 +87,10 @@ export default function Portfolio() {
       skillsSection.scrollIntoView({ behavior: "smooth" })
     }
   }
+
+  const [selectedProject, setSelectedProject] = useState("garden")
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -66,62 +113,41 @@ export default function Portfolio() {
   }, [])
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      const setupHoverVideo = (cardId: string, videoId: string, emojiId: string) => {
-        const card = document.getElementById(cardId)
-        const video = document.getElementById(videoId) as HTMLVideoElement | null
-        const emoji = document.getElementById(emojiId)
+    const videoMap = [
+      { id: "garden", videoId: "garden-video", emojiId: "garden-emoji" },
+      { id: "exchange", videoId: "exchange-video", emojiId: "exchange-emoji" },
+    ]
 
-        if (!card || !video || !emoji) {
-          return () => {}
+    videoMap.forEach(({ id, videoId, emojiId }) => {
+      const video = document.getElementById(videoId) as HTMLVideoElement | null
+      const emoji = document.getElementById(emojiId)
+      if (!video || !emoji) return
+
+      if (selectedProject === id) {
+        emoji.style.opacity = "0"
+        video.style.opacity = "1"
+        video.muted = false
+        video.controls = true
+        video.currentTime = 0
+        const playPromise = video.play()
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {})
         }
-
-        const handleMouseEnter = () => {
-          emoji.style.opacity = '0'
-          video.style.opacity = '1'
-          video.muted = false
-          video.controls = true
-          video.currentTime = 0
-          const playPromise = video.play()
-          if (playPromise !== undefined) {
-            playPromise.catch(() => {})
-          }
-        }
-
-        const handleMouseLeave = () => {
-          video.pause()
-          video.currentTime = 0
-          video.muted = true
-          video.controls = false
-          emoji.style.opacity = '1'
-          video.style.opacity = '0'
-        }
-
-        card.addEventListener('mouseenter', handleMouseEnter)
-        card.addEventListener('mouseleave', handleMouseLeave)
-
-        return () => {
-          card.removeEventListener('mouseenter', handleMouseEnter)
-          card.removeEventListener('mouseleave', handleMouseLeave)
-        }
+      } else {
+        video.pause()
+        video.currentTime = 0
+        video.muted = true
+        video.controls = false
+        emoji.style.opacity = "1"
+        video.style.opacity = "0"
       }
-
-      const cleanupGarden = setupHoverVideo('garden-card', 'garden-video', 'garden-emoji')
-      const cleanupExchange = setupHoverVideo('exchange-card', 'exchange-video', 'exchange-emoji')
-
-      return () => {
-        cleanupGarden()
-        cleanupExchange()
-      }
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
+    })
+  }, [selectedProject])
 
   const downloadCV = () => {
     const link = document.createElement("a")
-    link.href = "/Hitesh_Surya_CV.pdf"
-    link.download = "Hitesh_Surya_CV.pdf"
+    link.href = "/Surya(ATS).pdf"
+    link.download = "Surya(ATS).pdf"
     link.target = "_blank" // open PDF in new tab/window
     document.body.appendChild(link)
     link.click()
@@ -138,33 +164,64 @@ export default function Portfolio() {
         }
 
         .portfolio {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-          background-color: #0a0e1a;
-          color: #ffffff;
+          font-family: var(--font-body), "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+          background: radial-gradient(1200px 600px at 10% -10%, rgba(60, 140, 230, 0.12), transparent 62%),
+            radial-gradient(900px 500px at 110% 10%, rgba(45, 95, 215, 0.14), transparent 62%),
+            radial-gradient(1000px 800px at 50% 120%, rgba(30, 70, 190, 0.16), transparent 62%),
+            #05070d;
+          color: #f5f7ff;
           line-height: 1.6;
           overflow-x: hidden;
+          position: relative;
+        }
+
+        .portfolio::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background-image: linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+          background-size: 48px 48px;
+          mask-image: radial-gradient(circle at 50% 20%, rgba(0, 0, 0, 0.8), transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .portfolio::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(400px 200px at 20% 30%, rgba(255, 255, 255, 0.08), transparent 70%);
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        .portfolio > * {
+          position: relative;
+          z-index: 1;
         }
 
         /* Navigation */
         .navbar {
-          position: fixed;
+          position: absolute;
           top: 0;
-          width: 100%;
-          background: rgba(10, 14, 26, 0.8);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
+          left: 0;
+          right: 0;
+          background: rgba(6, 9, 16, 0.75);
+          backdrop-filter: blur(26px);
+          -webkit-backdrop-filter: blur(26px);
           z-index: 1000;
           padding: 1rem 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           transition: all 0.3s ease;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
         }
 
         .navbar.scrolled {
-          background: rgba(10, 14, 26, 0.95);
-          backdrop-filter: blur(25px);
-          -webkit-backdrop-filter: blur(25px);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+          background: rgba(6, 9, 16, 0.92);
+          backdrop-filter: blur(28px);
+          -webkit-backdrop-filter: blur(28px);
+          box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
         }
 
         .nav-container {
@@ -177,66 +234,57 @@ export default function Portfolio() {
         }
 
         .logo {
-          font-size: 1.5rem;
-          font-weight: bold;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 1.8rem;
+          font-weight: 400;
+          font-family: var(--font-display), "Bebas Neue", system-ui, sans-serif;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #f4f8ff;
+          text-shadow: 0 10px 30px rgba(111, 255, 233, 0.25);
         }
 
         .nav-links {
           display: flex;
           list-style: none;
-          gap: 2rem;
+          gap: 1.6rem;
           align-items: center;
+          padding: 0.6rem 1.2rem;
+          border-radius: 999px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.03);
+          box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
         }
 
         .nav-links button {
           background: none;
           border: none;
-          color: #ffffff;
+          color: #cdd7f3;
           text-decoration: none;
           transition: color 0.3s ease;
-          font-weight: 500;
+          font-weight: 600;
           cursor: pointer;
           font-size: 1rem;
         }
 
         .nav-links button:hover {
-          color: #667eea;
+          color: #8fc5ff;
         }
 
         .nav-links button.active {
-          color: #667eea;
+          color: #8fc5ff;
           position: relative;
         }
 
         .nav-links button.active::after {
           content: '';
           position: absolute;
-          bottom: -8px;
+          bottom: -10px;
           left: 50%;
           transform: translateX(-50%);
-          width: 6px;
-          height: 6px;
-          background: #667eea;
-          border-radius: 50%;
-        }
-
-        .theme-toggle {
-          background: none;
-          border: none;
-          color: #ffffff;
-          font-size: 1.2rem;
-          cursor: pointer;
-          padding: 0.5rem;
-          border-radius: 50%;
-          transition: background-color 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-          background-color: rgba(255, 255, 255, 0.1);
+          width: 28px;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, #5a7bff, transparent);
+          border-radius: 999px;
         }
 
         /* Hero Section */
@@ -244,8 +292,7 @@ export default function Portfolio() {
           min-height: 100vh;
           display: flex;
           align-items: center;
-          padding: 0 2rem;
-          margin-top: 80px;
+          padding: 5.5rem 2rem 2rem;
           position: relative;
         }
 
@@ -253,35 +300,42 @@ export default function Portfolio() {
           max-width: 1200px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
+          grid-template-columns: 1.1fr 0.9fr;
+          gap: 3.5rem;
           align-items: center;
+          position: relative;
+          z-index: 1;
         }
 
         .hero-content h1 {
-          font-size: 3.5rem;
-          font-weight: 700;
+          font-size: clamp(2.8rem, 4vw, 4.6rem);
+          font-weight: 500;
+          font-family: var(--font-display), "Bebas Neue", system-ui, sans-serif;
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
           margin-bottom: 1rem;
           line-height: 1.2;
         }
 
         .hero-content .name {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          background: linear-gradient(120deg, #6fb7ff 0%, #7da6ff 50%, #4a7dff 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
         .hero-subtitle {
-          font-size: 1.2rem;
-          color: #a0a9c0;
+          font-size: 1.1rem;
+          color: #a8b3d6;
           margin-bottom: 2rem;
-          font-weight: 500;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
 
         .hero-description {
           font-size: 1.1rem;
-          color: #8892b0;
+          color: #b4bfdc;
           margin-bottom: 3rem;
           line-height: 1.8;
         }
@@ -293,8 +347,8 @@ export default function Portfolio() {
         }
 
         .btn-primary {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
+          background: linear-gradient(120deg, #6fb7ff 0%, #7da6ff 60%, #4a7dff 100%);
+          color: #02040a;
           padding: 1rem 2rem;
           border: none;
           border-radius: 8px;
@@ -309,15 +363,15 @@ export default function Portfolio() {
         }
 
         .btn-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+          transform: translateY(-2px) scale(1.01);
+          box-shadow: 0 12px 30px rgba(90, 123, 255, 0.3);
         }
 
         .btn-secondary {
           background: transparent;
-          color: #ffffff;
+          color: #f5f7ff;
           padding: 1rem 2rem;
-          border: 2px solid rgba(255, 255, 255, 0.2);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 8px;
           font-size: 1rem;
           font-weight: 600;
@@ -330,8 +384,8 @@ export default function Portfolio() {
         }
 
         .btn-secondary:hover {
-          border-color: #667eea;
-          background: rgba(102, 126, 234, 0.1);
+          border-color: #8fc5ff;
+          background: rgba(90, 123, 255, 0.1);
         }
 
         .hero-image {
@@ -341,17 +395,17 @@ export default function Portfolio() {
         }
 
         .profile-image-container {
-          width: 300px;
-          height: 300px;
-          border: 3px solid #667eea;
+          width: 320px;
+          height: 320px;
+          border: 2px solid rgba(90, 123, 255, 0.7);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(102, 126, 234, 0.1);
+          background: rgba(90, 123, 255, 0.12);
           position: relative;
           overflow: hidden;
-          box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+          box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
         }
 
         .profile-image-container::before {
@@ -361,8 +415,8 @@ export default function Portfolio() {
           left: -50%;
           width: 200%;
           height: 200%;
-          background: conic-gradient(from 0deg, transparent, #667eea, transparent);
-          animation: rotate 4s linear infinite;
+          background: conic-gradient(from 0deg, transparent, #5a7bff, #8fc5ff, transparent);
+          animation: rotate 6s linear infinite;
           z-index: 1;
         }
 
@@ -370,7 +424,7 @@ export default function Portfolio() {
           content: '';
           position: absolute;
           inset: 3px;
-          background: #0a0e1a;
+          background: #070a12;
           border-radius: 50%;
           z-index: 2;
         }
@@ -402,7 +456,7 @@ export default function Portfolio() {
         }
 
         .social-links a {
-          color: #8892b0;
+          color: #aeb8d6;
           font-size: 1.5rem;
           cursor: pointer;
           transition: color 0.3s ease, transform 0.3s ease;
@@ -413,15 +467,15 @@ export default function Portfolio() {
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         .social-links a:hover {
-          color: #667eea;
+          color: #8fc5ff;
           transform: translateY(-2px);
-          background: rgba(102, 126, 234, 0.1);
-          border-color: #667eea;
+          background: rgba(90, 123, 255, 0.1);
+          border-color: rgba(90, 123, 255, 0.55);
         }
 
         .social-links a svg {
@@ -434,7 +488,7 @@ export default function Portfolio() {
           bottom: 2rem;
           left: 50%;
           transform: translateX(-50%);
-          color: #8892b0;
+          color: #a6b1d0;
           font-size: 1.5rem;
           animation: bounce 2s infinite;
           background: none;
@@ -444,7 +498,7 @@ export default function Portfolio() {
         }
 
         .scroll-indicator:hover {
-          color: #667eea;
+          color: #8fc5ff;
         }
 
         @keyframes bounce {
@@ -461,7 +515,18 @@ export default function Portfolio() {
 
         /* Section Styles */
         .section {
-          padding: 6rem 2rem;
+          padding: 6.5rem 2rem;
+        }
+
+        #projects.section {
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          padding: 3rem 2rem;
+        }
+
+        #projects .container {
+          width: 100%;
         }
 
         .container {
@@ -470,14 +535,17 @@ export default function Portfolio() {
         }
 
         .section-title {
-          font-size: 2.5rem;
-          font-weight: 700;
+          font-size: clamp(2.2rem, 3vw, 3.2rem);
+          font-weight: 500;
+          font-family: var(--font-display), "Bebas Neue", system-ui, sans-serif;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
           text-align: center;
           margin-bottom: 1rem;
         }
 
         .section-subtitle {
-          color: #8892b0;
+          color: #9ea8c7;
           text-align: center;
           margin-bottom: 4rem;
           font-size: 1.1rem;
@@ -491,17 +559,18 @@ export default function Portfolio() {
         }
 
         .skill-category {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           padding: 2rem;
           text-align: center;
           transition: transform 0.3s ease, border-color 0.3s ease;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
         }
 
         .skill-category:hover {
           transform: translateY(-5px);
-          border-color: #667eea;
+          border-color: rgba(90, 123, 255, 0.6);
         }
 
         .skill-category h3 {
@@ -518,47 +587,104 @@ export default function Portfolio() {
         }
 
         .skill-tag {
-          background: rgba(102, 126, 234, 0.2);
-          color: #667eea;
+          background: rgba(90, 123, 255, 0.18);
+          color: #8fc5ff;
           padding: 0.5rem 1rem;
           border-radius: 20px;
           font-size: 0.9rem;
           font-weight: 500;
-          border: 1px solid rgba(102, 126, 234, 0.3);
+          border: 1px solid rgba(90, 123, 255, 0.3);
         }
 
         /* Projects Section */
         .projects-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+          grid-template-columns: 260px 1fr;
           gap: 2rem;
+          align-items: start;
+        }
+
+        .projects-list {
+          display: grid;
+          gap: 1rem;
+        }
+
+        .project-item {
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 12px;
+          padding: 1rem 1.1rem;
+          text-align: left;
+          color: #cdd7f3;
+          font-weight: 600;
+          cursor: pointer;
+          transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+          border-color: rgba(90, 123, 255, 0.4);
+          transform: translateY(-2px);
+        }
+
+        .project-item.active {
+          border-color: rgba(90, 123, 255, 0.65);
+          box-shadow: 0 18px 40px rgba(10, 12, 26, 0.45);
+          color: #8fc5ff;
+        }
+
+        .project-stage {
+          position: relative;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 16px;
+          padding: 1.5rem;
+          min-height: 380px;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+        }
+
+        .project-stage::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 40%, rgba(90, 123, 255, 0.25), transparent 60%);
+          opacity: 0;
+          transition: opacity 0.35s ease;
+          pointer-events: none;
+        }
+
+        .project-stage.active::before {
+          opacity: 1;
         }
 
         .project-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 12px;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 14px;
           overflow: hidden;
-          transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .project-card:hover {
-          transform: translateY(-5px);
-          border-color: #667eea;
+          transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+          box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
+          position: relative;
+          max-width: 720px;
+          margin: 0 auto;
+          width: 100%;
         }
 
         .project-image {
-          height: 300px;
-          background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+          height: 230px;
+          background: linear-gradient(135deg, rgba(111, 183, 255, 0.14) 0%, rgba(74, 125, 255, 0.12) 100%);
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #8892b0;
-          font-size: 3rem;
+          color: #8fc5ff;
+          font-size: 1.4rem;
+          font-weight: 700;
+          letter-spacing: 0.2em;
           position: relative;
           overflow: hidden;
-          border-radius: 12px 12px 0 0;
-          background-color: #0a0e1a;
+          border-radius: 14px 14px 0 0;
+          background-color: #0b0f1a;
         }
 
         .project-video {
@@ -576,7 +702,6 @@ export default function Portfolio() {
           transition: opacity 0.3s ease;
         }
 
-
         .project-emoji {
           position: relative;
           transition: opacity 0.3s ease;
@@ -584,17 +709,23 @@ export default function Portfolio() {
         }
 
         .project-content {
-          padding: 1.9rem;
+          padding: 1.2rem 1.6rem 1.4rem;
+          position: relative;
+          z-index: 1;
         }
 
         .project-content h3 {
           font-size: 1.25rem;
-          margin-bottom: 1rem;
+          margin-bottom: 0.4rem;
           color: #ffffff;
         }
 
+        .project-details {
+          margin-top: 0.6rem;
+        }
+
         .project-content p {
-          color: #8892b0;
+          color: #a7b1cf;
           margin-bottom: 1.2rem;
           line-height: 1.55;
           font-size: 0.95rem;
@@ -608,8 +739,8 @@ export default function Portfolio() {
         }
 
         .tech-tag {
-          background: rgba(102, 126, 234, 0.2);
-          color: #667eea;
+          background: rgba(90, 123, 255, 0.18);
+          color: #8fc5ff;
           padding: 0.3rem 0.8rem;
           border-radius: 15px;
           font-size: 0.8rem;
@@ -625,7 +756,7 @@ export default function Portfolio() {
         .project-links button {
           background: none;
           border: none;
-          color: #667eea;
+          color: #8fc5ff;
           text-decoration: none;
           font-weight: 600;
           display: flex;
@@ -652,11 +783,11 @@ export default function Portfolio() {
         .about-text {
           font-size: 1.1rem;
           line-height: 1.8;
-          color: #8892b0;
+          color: #a9b3d1;
         }
 
         .about-text strong {
-          color: #667eea;
+          color: #8fc5ff;
         }
 
         .about-info {
@@ -681,16 +812,17 @@ export default function Portfolio() {
         }
 
         .expertise-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           padding: 1.5rem;
           transition: transform 0.3s ease, border-color 0.3s ease;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
         }
 
         .expertise-card:hover {
           transform: translateX(10px);
-          border-color: #667eea;
+          border-color: rgba(90, 123, 255, 0.55);
         }
 
         .expertise-card .icon {
@@ -705,7 +837,7 @@ export default function Portfolio() {
         }
 
         .expertise-card p {
-          color: #8892b0;
+          color: #a7b1cf;
           line-height: 1.6;
         }
 
@@ -718,16 +850,55 @@ export default function Portfolio() {
         }
 
         .experience-card {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           padding: 2rem;
           transition: transform 0.3s ease, border-color 0.3s ease;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .experience-card.highlight {
+          border-color: rgba(90, 123, 255, 0.55);
+          box-shadow: 0 24px 55px rgba(10, 12, 26, 0.45);
+          background: rgba(90, 123, 255, 0.08);
+        }
+
+        .experience-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.4rem;
+          padding: 0.2rem 0.6rem;
+          border-radius: 999px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          color: #8fc5ff;
+          border: 1px solid rgba(90, 123, 255, 0.4);
+          background: rgba(90, 123, 255, 0.12);
         }
 
         .experience-card:hover {
           transform: translateY(-5px);
-          border-color: #667eea;
+          border-color: rgba(90, 123, 255, 0.55);
+        }
+
+        .experience-divider {
+          grid-column: 1 / -1;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          color: #9ea8c7;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .experience-divider::before,
+        .experience-divider::after {
+          content: "";
+          height: 1px;
+          flex: 1;
+          background: rgba(255, 255, 255, 0.08);
         }
 
         .experience-header {
@@ -743,13 +914,13 @@ export default function Portfolio() {
         }
 
         .experience-location {
-          color: #667eea;
+          color: #8fc5ff;
           font-size: 0.9rem;
           font-weight: 500;
         }
 
         .experience-card p {
-          color: #8892b0;
+          color: #a7b1cf;
           line-height: 1.6;
         }
 
@@ -760,13 +931,13 @@ export default function Portfolio() {
         }
 
         .hackathon-tag {
-          background: rgba(102, 126, 234, 0.2);
-          color: #667eea;
+          background: rgba(90, 123, 255, 0.18);
+          color: #8fc5ff;
           padding: 0.4rem 0.8rem;
           border-radius: 15px;
           font-size: 0.9rem;
           font-weight: 500;
-          border: 1px solid rgba(102, 126, 234, 0.3);
+          border: 1px solid rgba(90, 123, 255, 0.3);
         }
 
         /* Contact Section */
@@ -784,7 +955,7 @@ export default function Portfolio() {
         }
 
         .contact-info p {
-          color: #8892b0;
+          color: #a7b1cf;
           margin-bottom: 2rem;
           font-size: 1.1rem;
         }
@@ -798,17 +969,22 @@ export default function Portfolio() {
           display: flex;
           align-items: center;
           gap: 1rem;
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 12px;
+          padding: 1rem 1.2rem;
+          box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
         }
 
         .contact-item .icon {
           width: 50px;
           height: 50px;
-          background: rgba(102, 126, 234, 0.2);
+          background: rgba(90, 123, 255, 0.18);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
-          color: #667eea;
+          color: #8fc5ff;
           font-size: 1.2rem;
         }
 
@@ -818,15 +994,16 @@ export default function Portfolio() {
         }
 
         .contact-item div p {
-          color: #8892b0;
+          color: #a7b1cf;
           margin: 0;
         }
 
         .contact-form {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 12px;
           padding: 2rem;
+          box-shadow: 0 22px 50px rgba(0, 0, 0, 0.35);
         }
 
         .contact-form h3 {
@@ -855,8 +1032,8 @@ export default function Portfolio() {
         .form-group input,
         .form-group textarea {
           width: 100%;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          background: rgba(6, 9, 16, 0.6);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           border-radius: 8px;
           padding: 1rem;
           color: #ffffff;
@@ -867,8 +1044,8 @@ export default function Portfolio() {
         .form-group input:focus,
         .form-group textarea:focus {
           outline: none;
-          border-color: #667eea;
-          background: rgba(255, 255, 255, 0.1);
+          border-color: rgba(90, 123, 255, 0.6);
+          box-shadow: 0 0 0 2px rgba(90, 123, 255, 0.18);
         }
 
         .form-group textarea {
@@ -876,10 +1053,24 @@ export default function Portfolio() {
           min-height: 120px;
         }
 
+        .form-status {
+          margin-top: 0.75rem;
+          font-size: 0.95rem;
+          color: #a7b1cf;
+        }
+
+        .form-status.success {
+          color: #8fc5ff;
+        }
+
+        .form-status.error {
+          color: #ff7bc8;
+        }
+
         /* Footer */
         .footer {
           background: rgba(255, 255, 255, 0.02);
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
           padding: 3rem 2rem 2rem;
         }
 
@@ -898,7 +1089,7 @@ export default function Portfolio() {
         }
 
         .footer-section p {
-          color: #8892b0;
+          color: #a7b1cf;
           line-height: 1.6;
           margin-bottom: 1rem;
         }
@@ -914,7 +1105,7 @@ export default function Portfolio() {
         .footer-links button {
           background: none;
           border: none;
-          color: #8892b0;
+          color: #a7b1cf;
           text-decoration: none;
           transition: color 0.3s ease;
           cursor: pointer;
@@ -922,19 +1113,19 @@ export default function Portfolio() {
         }
 
         .footer-links button:hover {
-          color: #667eea;
+          color: #8fc5ff;
         }
 
         .footer-bottom {
           text-align: center;
           margin-top: 2rem;
           padding-top: 2rem;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          color: #8892b0;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          color: #a7b1cf;
         }
 
         .footer-bottom .heart {
-          color: #ff6b6b;
+          color: #ff7bc8;
         }
 
         /* Responsive Design */
@@ -954,8 +1145,17 @@ export default function Portfolio() {
 
           .skills-grid,
           .projects-grid {
+            gap: 1.5rem;
+          }
+
+          .projects-grid {
             grid-template-columns: 1fr;
           }
+
+          .project-stage {
+            margin-top: 1.5rem;
+          }
+
 
           .about-content,
           .contact-content,
@@ -979,65 +1179,61 @@ export default function Portfolio() {
         }
       `}</style>
 
-      {/* Navigation */}
-      <nav className="navbar">
-        <div className="nav-container">
-          <div className="logo">Hitesh Surya Thejaswi M</div>
-          <ul className="nav-links">
-            <li>
-              <button onClick={() => scrollToSection("home")} className={activeSection === "home" ? "active" : ""}>
-                Home
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("about")} className={activeSection === "about" ? "active" : ""}>
-                About
-              </button>
-            </li>
-            <li>
-              <button onClick={() => scrollToSection("skills")} className={activeSection === "skills" ? "active" : ""}>
-                Skills
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("experience")}
-                className={activeSection === "experience" ? "active" : ""}
-              >
-                Experience
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("projects")}
-                className={activeSection === "projects" ? "active" : ""}
-              >
-                Projects
-              </button>
-            </li>
-            <li>
-              <button
-                onClick={() => scrollToSection("contact")}
-                className={activeSection === "contact" ? "active" : ""}
-              >
-                Contact
-              </button>
-            </li>
-            <li>
-              <button className="theme-toggle">🌙</button>
-            </li>
-          </ul>
-        </div>
-      </nav>
-
       {/* Hero Section */}
       <section id="home" className="hero">
+        {/* Navigation */}
+        <nav className="navbar">
+          <div className="nav-container">
+            <div className="logo">Hitesh Surya Thejaswi M</div>
+            <ul className="nav-links">
+              <li>
+                <button onClick={() => scrollToSection("home")} className={activeSection === "home" ? "active" : ""}>
+                  Home
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection("about")} className={activeSection === "about" ? "active" : ""}>
+                  About
+                </button>
+              </li>
+              <li>
+                <button onClick={() => scrollToSection("skills")} className={activeSection === "skills" ? "active" : ""}>
+                  Skills
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("experience")}
+                  className={activeSection === "experience" ? "active" : ""}
+                >
+                  Experience
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("projects")}
+                  className={activeSection === "projects" ? "active" : ""}
+                >
+                  Projects
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => scrollToSection("contact")}
+                  className={activeSection === "contact" ? "active" : ""}
+                >
+                  Contact
+                </button>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div className="hero-container">
           <div className="hero-content">
             <h1>
               Hi, I'm <span className="name">Hitesh Surya</span>
             </h1>
-            <p className="hero-subtitle">Software Engineer | Full Stack | AI/ML | Computer Vision</p>
+            <p className="hero-subtitle">Software Engineer | Full Stack | AI/ML | Data Scientist</p>
             <p className="hero-description">
               Software engineer building smart and scalable full-stack solutions that turn complex ideas into intuitive
               digital products.
@@ -1070,7 +1266,7 @@ export default function Portfolio() {
           </div>
           <div className="hero-image">
             <div className="profile-image-container">
-              <img src="/hitesh-profile.jpg" alt="Hitesh Surya Thejaswi M" className="profile-photo" />
+              <img src="/chatgpt-image.png" alt="Hitesh Surya Thejaswi M" className="profile-photo" />
             </div>
           </div>
         </div>
@@ -1101,6 +1297,7 @@ export default function Portfolio() {
                 <span className="skill-tag">CSS</span>
                 <span className="skill-tag">Next.js</span>
                 <span className="skill-tag">Three.js</span>
+                <span className="skill-tag">VS Code</span>
               </div>
             </div>
             <div className="skill-category">
@@ -1125,134 +1322,166 @@ export default function Portfolio() {
               <div className="skill-tags">
                 <span className="skill-tag">Git</span>
                 <span className="skill-tag">GitHub</span>
+                <span className="skill-tag">VS Code</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Projects Section */}
+            {/* Projects Section */}
       <section id="projects" className="section">
         <div className="container">
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">A showcase of my recent work and personal projects</p>
           <div className="projects-grid">
-            <div className="project-card" id="garden-card">
-              <div className="project-image">
-                <video
-                  id="garden-video"
-                  className="project-video"
-                  muted
-                  loop
-                  preload="metadata"
-                  crossOrigin="anonymous"
-                  suppressHydrationWarning
-                >
-                  <source
-                    src="/garden-video.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
-                <div id="garden-emoji" className="project-emoji">🌱</div>
-              </div>
-              <div className="project-content">
-                <h3>3D Virtual Garden Builder</h3>
-                <p>
-                  Developed a 3D virtual garden builder enabling users to upload real garden images, detect medicinal
-                  plants with 95%+ accuracy using YOLOv5, and visualize them in an interactive React + Three.js
-                  environment. Enhanced plant detection with AI-powered medicinal insights.
-                </p>
-                <div className="project-tech">
-                  <span className="tech-tag">React</span>
-                  <span className="tech-tag">Three.js</span>
-                  <span className="tech-tag">YOLOv5</span>
-                  <span className="tech-tag">Node.js</span>
-                  <span className="tech-tag">MongoDB</span>
-                </div>
-                <div className="project-links">
-                  <button>🔗 Live Demo</button>
-                  <button>💻 Code</button>
-                </div>
-              </div>
+            <div className="projects-list">
+              <button
+                className={`project-item${selectedProject === "garden" ? " active" : ""}`}
+                onClick={() => setSelectedProject("garden")}
+              >
+                3D Virtual Garden Builder
+              </button>
+              <button
+                className={`project-item${selectedProject === "chatbot" ? " active" : ""}`}
+                onClick={() => setSelectedProject("chatbot")}
+              >
+                AI Medical Chatbot
+              </button>
+              <button
+                className={`project-item${selectedProject === "exchange" ? " active" : ""}`}
+                onClick={() => setSelectedProject("exchange")}
+              >
+                Exchange Rate Predictor
+              </button>
             </div>
-            <div className="project-card">
-              <div className="project-image">🤖</div>
-              <div className="project-content">
-                <h3>AI Medical Chatbot</h3>
-                <p>
-                  Created an offline-friendly NLP chatbot trained on a 5,000+ entry medical dataset, delivering 90%+
-                  intent classification accuracy for symptom-based advice without third-party APIs. Demonstrated
-                  practical AI deployment skills.
-                </p>
-                <div className="project-tech">
-                  <span className="tech-tag">Python</span>
-                  <span className="tech-tag">NLP</span>
-                  <span className="tech-tag">Machine Learning</span>
-                  <span className="tech-tag">Medical Dataset</span>
+
+            <div className={`project-stage${selectedProject ? " active" : ""}`}>
+              {selectedProject === "garden" && (
+                <div className="project-card" id="garden-card">
+                  <div className="project-image">
+                    <video
+                      id="garden-video"
+                      className="project-video"
+                      muted
+                      loop
+                      preload="metadata"
+                      crossOrigin="anonymous"
+                      suppressHydrationWarning
+                    >
+                      <source src="/garden-video.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    <div id="garden-emoji" className="project-emoji">GDN</div>
+                  </div>
+                  <div className="project-content">
+                    <h3>3D Virtual Garden Builder</h3>
+                    <div className="project-details">
+                      <p>
+                        Developed a 3D virtual garden builder enabling users to upload real garden images, detect medicinal
+                        plants with 95%+ accuracy using YOLOv5, and visualize them in an interactive React + Three.js
+                        environment. Enhanced plant detection with AI-powered medicinal insights.
+                      </p>
+                      <div className="project-tech">
+                        <span className="tech-tag">React</span>
+                        <span className="tech-tag">Three.js</span>
+                        <span className="tech-tag">YOLOv5</span>
+                        <span className="tech-tag">Node.js</span>
+                        <span className="tech-tag">MongoDB</span>
+                      </div>
+                      <div className="project-links">
+                        <button>Live Demo</button>
+                        <button>Code</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="project-links">
-                  <button>🔗 Live Demo</button>
-                  <button>💻 Code</button>
+              )}
+
+              {selectedProject === "chatbot" && (
+                <div className="project-card">
+                  <div className="project-image">AI</div>
+                  <div className="project-content">
+                    <h3>AI Medical Chatbot</h3>
+                    <div className="project-details">
+                      <p>
+                        Created an offline-friendly NLP chatbot trained on a 5,000+ entry medical dataset, delivering 90%+
+                        intent classification accuracy for symptom-based advice without third-party APIs. Demonstrated
+                        practical AI deployment skills.
+                      </p>
+                      <div className="project-tech">
+                        <span className="tech-tag">Python</span>
+                        <span className="tech-tag">NLP</span>
+                        <span className="tech-tag">Machine Learning</span>
+                        <span className="tech-tag">Medical Dataset</span>
+                      </div>
+                      <div className="project-links">
+                        <button>Live Demo</button>
+                        <button>Code</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="project-card" id="exchange-card">
-              <div className="project-image">
-                <video
-                  id="exchange-video"
-                  className="project-video"
-                  muted
-                  loop
-                  playsInline
-                  preload="metadata"
-                  crossOrigin="anonymous"
-                  suppressHydrationWarning
-                >
-                  <source
-                    src="/Exchange rate predictor.mp4"
-                    type="video/mp4"
-                  />
-                  Your browser does not support the video tag.
-                </video>
-                <div id="exchange-emoji" className="project-emoji">💱</div>
-              </div>
-              <div className="project-content">
-                <h3>Exchange Rate Predictor</h3>
-                <p>
-                  Built a currency intelligence platform that unifies real-time FX ingestion, normalization,
-                  visualization, and forecasting. Implemented ARIMA and LSTM models for interpretable, comparable
-                  short-term predictions alongside historical trends, plus live conversion, multi-currency
-                  comparison, OCR receipt extraction, and expense summaries.
-                </p>
-                <div className="project-tech">
-                  <span className="tech-tag">Next.js</span>
-                  <span className="tech-tag">React</span>
-                  <span className="tech-tag">TypeScript</span>
-                  <span className="tech-tag">Tailwind CSS</span>
-                  <span className="tech-tag">Recharts</span>
-                  <span className="tech-tag">Tesseract.js</span>
-                  <span className="tech-tag">TensorFlow.js</span>
-                  <span className="tech-tag">Frankfurter API</span>
-                  <span className="tech-tag">ipapi.co</span>
+              )}
+
+              {selectedProject === "exchange" && (
+                <div className="project-card" id="exchange-card">
+                  <div className="project-image">
+                    <video
+                      id="exchange-video"
+                      className="project-video"
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      crossOrigin="anonymous"
+                      suppressHydrationWarning
+                    >
+                      <source src="/Exchange rate predictor.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                    <div id="exchange-emoji" className="project-emoji">FX</div>
+                  </div>
+                  <div className="project-content">
+                    <h3>Exchange Rate Predictor</h3>
+                    <div className="project-details">
+                      <p>
+                        Built a currency intelligence platform that unifies real-time FX ingestion, normalization,
+                        visualization, and forecasting. Implemented ARIMA and LSTM models for interpretable, comparable
+                        short-term predictions alongside historical trends, plus live conversion, multi-currency
+                        comparison, OCR receipt extraction, and expense summaries.
+                      </p>
+                      <div className="project-tech">
+                        <span className="tech-tag">Next.js</span>
+                        <span className="tech-tag">React</span>
+                        <span className="tech-tag">TypeScript</span>
+                        <span className="tech-tag">Tailwind CSS</span>
+                        <span className="tech-tag">Recharts</span>
+                        <span className="tech-tag">Tesseract.js</span>
+                        <span className="tech-tag">TensorFlow.js</span>
+                        <span className="tech-tag">Frankfurter API</span>
+                        <span className="tech-tag">ipapi.co</span>
+                      </div>
+                      <div className="project-links">
+                        <a
+                          href="https://currency-exchange-rate-predictor-hitesh-surya.vercel.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                        <a
+                          href="https://github.com/hiteshsurya018-cmd/Currency-Converter-with-exchange-rate-predictor"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="project-links">
-                  <a
-                    href="https://currency-exchange-rate-predictor-hitesh-surya.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    🔗 Live Demo
-                  </a>
-                  <a
-                    href="https://github.com/hiteshsurya018-cmd/Currency-Converter-with-exchange-rate-predictor"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    💻 Code
-                  </a>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>
@@ -1332,6 +1561,34 @@ export default function Portfolio() {
           <h2 className="section-title">Experience & Activities</h2>
           <p className="section-subtitle">Workshops, hackathons, and learning experiences</p>
           <div className="experience-grid">
+            <div className="experience-card highlight">
+              <div className="experience-header">
+                <h3>Global Quest Technilogies</h3>
+                <span className="experience-location">
+                  Data Science / Gen AI Intern · <span className="experience-badge">Currently</span>
+                </span>
+              </div>
+              <p>
+                Contributed to applied data science and generative AI projects, focusing on data preparation, model
+                experimentation, and practical deployment workflows.
+              </p>
+            </div>
+
+            <div className="experience-card highlight">
+              <div className="experience-header">
+                <h3>Inventeron</h3>
+                <span className="experience-location">
+                  AIML Data Analyst Intern · <span className="experience-badge">Currently</span>
+                </span>
+              </div>
+              <p>
+                Worked on AI/ML data analysis tasks, supporting model insights, reporting, and data-driven decision
+                making.
+              </p>
+            </div>
+
+            <div className="experience-divider" aria-hidden="true"></div>
+
             <div className="experience-card">
               <div className="experience-header">
                 <h3>Generative AI Workshop</h3>
@@ -1345,6 +1602,17 @@ export default function Portfolio() {
 
             <div className="experience-card">
               <div className="experience-header">
+                <h3>Hackathons Coordinated</h3>
+                <span className="experience-location">Organizer</span>
+              </div>
+              <div className="hackathon-list">
+                <span className="hackathon-tag">Hackfinity</span>
+                <span className="hackathon-tag">Hackverse</span>
+              </div>
+            </div>
+
+            <div className="experience-card">
+              <div className="experience-header">
                 <h3>Hackathons Participated</h3>
                 <span className="experience-location">Various</span>
               </div>
@@ -1352,17 +1620,6 @@ export default function Portfolio() {
                 <span className="hackathon-tag">Hack 4 Mysore</span>
                 <span className="hackathon-tag">Invaders</span>
                 <span className="hackathon-tag">Prahyatha'24</span>
-              </div>
-            </div>
-
-            <div className="experience-card">
-              <div className="experience-header">
-                <h3>Hackathons Coordinated</h3>
-                <span className="experience-location">Organizer</span>
-              </div>
-              <div className="hackathon-list">
-                <span className="hackathon-tag">Hackfinity</span>
-                <span className="hackathon-tag">Hackverse</span>
               </div>
             </div>
           </div>
@@ -1407,6 +1664,11 @@ export default function Portfolio() {
             </div>
             <div className="contact-form">
               <h3>Send me a message</h3>
+              {!emailjsConfigured && (
+                <p className="form-status error">
+                  Email service not configured. Check your .env.local and restart the server.
+                </p>
+              )}
               <form onSubmit={handleSubmit}>
                 <div className="form-row">
                   <div className="form-group">
@@ -1457,9 +1719,22 @@ export default function Portfolio() {
                     required
                   />
                 </div>
-                <button type="submit" className="btn-primary">
-                  Send Message ✈️
+                <button type="submit" className="btn-primary" disabled={submitState.status === "sending"}>
+                  {submitState.status === "sending" ? "Sending..." : "Send Message"}
                 </button>
+                {submitState.status !== "idle" && (
+                  <p
+                    className={`form-status ${
+                      submitState.status === "sent"
+                        ? "success"
+                        : submitState.status === "error"
+                        ? "error"
+                        : ""
+                    }`}
+                  >
+                    {submitState.message}
+                  </p>
+                )}
               </form>
             </div>
           </div>
