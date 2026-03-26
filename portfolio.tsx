@@ -4,6 +4,42 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import emailjs from "@emailjs/browser"
+import AssistantContainer from "./components/assistant/AssistantContainer"
+
+type GitHubProfile = {
+  login: string
+  avatar_url: string
+  html_url: string
+  blog: string | null
+  location: string | null
+  bio: string | null
+  public_repos: number
+  public_gists: number
+  followers: number
+  following: number
+  created_at: string
+  updated_at: string
+}
+
+const linkedInProfile = {
+  url: "https://www.linkedin.com/in/hitesh-surya-b1119a342",
+  handle: "hitesh-surya-b1119a342",
+  name: "Hitesh Surya Thejaswi M",
+  headline: "Software Engineer | Full Stack | AI/ML | Data Scientist",
+  location: "Bengaluru, Karnataka, India",
+  summary:
+    "Latest LinkedIn snapshot styled for the portfolio. Values are manually mirrored from the profile analytics view.",
+  analytics: [
+    { label: "Profile viewers", value: "168", detail: "Past 90 days" },
+    { label: "Post impressions", value: "119", detail: "84.9% past 7 days" },
+    { label: "Search appearances", value: "7", detail: "Previous week" },
+  ],
+  highlights: [
+    { label: "Location", value: "Bengaluru, Karnataka, India" },
+    { label: "Profile Handle", value: "hitesh-surya-b1119a342" },
+    { label: "Snapshot Mode", value: "Latest LinkedIn snapshot" },
+  ],
+}
 
 export default function Portfolio() {
   const emailjsConfigured = Boolean(
@@ -26,6 +62,8 @@ export default function Portfolio() {
   })
 
   const [activeSection, setActiveSection] = useState("home")
+  const [githubProfile, setGithubProfile] = useState<GitHubProfile | null>(null)
+  const [githubStatus, setGithubStatus] = useState<"loading" | "ready" | "error">("loading")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -98,8 +136,9 @@ export default function Portfolio() {
       let currentSection = ''
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop
-        const sectionHeight = section.clientHeight
+        const sectionElement = section as HTMLElement
+        const sectionTop = sectionElement.offsetTop
+        const sectionHeight = sectionElement.clientHeight
         if (window.scrollY >= sectionTop - 200) {
           currentSection = section.getAttribute('id') || ''
         }
@@ -123,7 +162,9 @@ export default function Portfolio() {
       const emoji = document.getElementById(emojiId)
       if (!video || !emoji) return
 
-      if (selectedProject === id) {
+      const shouldPlay = activeSection === "projects" && selectedProject === id
+
+      if (shouldPlay) {
         emoji.style.opacity = "0"
         video.style.opacity = "1"
         video.muted = false
@@ -142,7 +183,46 @@ export default function Portfolio() {
         video.style.opacity = "0"
       }
     })
-  }, [selectedProject])
+  }, [activeSection, selectedProject])
+
+  useEffect(() => {
+    const controller = new AbortController()
+
+    const loadGithubProfile = async () => {
+      try {
+        setGithubStatus("loading")
+        const response = await fetch("https://api.github.com/users/hiteshsurya018-cmd", {
+          signal: controller.signal,
+          headers: {
+            Accept: "application/vnd.github+json",
+          },
+        })
+
+        if (!response.ok) {
+          throw new Error(`GitHub request failed with ${response.status}`)
+        }
+
+        const data = (await response.json()) as GitHubProfile
+        setGithubProfile(data)
+        setGithubStatus("ready")
+      } catch (error) {
+        if (controller.signal.aborted) return
+        console.error("GitHub profile fetch failed:", error)
+        setGithubStatus("error")
+      }
+    }
+
+    loadGithubProfile()
+
+    return () => controller.abort()
+  }, [])
+
+  const formatGithubDate = (date: string) =>
+    new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    }).format(new Date(date))
 
   const downloadCV = () => {
     const link = document.createElement("a")
@@ -1067,6 +1147,381 @@ export default function Portfolio() {
           color: #ff7bc8;
         }
 
+        /* Profile Presence */
+        .presence-section {
+          padding-top: 2rem;
+        }
+
+        .presence-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
+          gap: 1.25rem;
+          align-items: start;
+        }
+
+        .github-analytics-card {
+          background:
+            radial-gradient(420px 180px at 0% 0%, rgba(111, 232, 255, 0.1), transparent 65%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 28px;
+          padding: 2rem;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+        }
+
+        .github-state-card {
+          min-height: 180px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 20px;
+          border: 1px dashed rgba(255, 255, 255, 0.12);
+          color: #b8c4e9;
+          background: rgba(6, 9, 16, 0.34);
+          text-align: center;
+          padding: 1.5rem;
+        }
+
+        .github-state-card.error {
+          border-color: rgba(255, 123, 200, 0.28);
+          color: #ffd6ee;
+        }
+
+        .github-profile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 1.5rem;
+          margin-bottom: 1.75rem;
+        }
+
+        .github-profile-meta {
+          display: flex;
+          gap: 1.25rem;
+          align-items: center;
+        }
+
+        .github-avatar {
+          width: 84px;
+          height: 84px;
+          border-radius: 24px;
+          object-fit: cover;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        .github-kicker {
+          color: #8fdcff;
+          font-size: 0.78rem;
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          margin-bottom: 0.45rem;
+        }
+
+        .github-profile-meta h3 {
+          font-size: 2rem;
+          margin-bottom: 0.45rem;
+          color: #ffffff;
+        }
+
+        .github-bio {
+          color: #b8c4e9;
+          max-width: 520px;
+          white-space: pre-line;
+        }
+
+        .github-profile-links {
+          display: flex;
+          gap: 0.8rem;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+
+        .github-profile-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.8rem 1.15rem;
+          border-radius: 999px;
+          color: #f6fbff;
+          text-decoration: none;
+          border: 1px solid rgba(143, 220, 255, 0.22);
+          background: rgba(255, 255, 255, 0.04);
+          transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .github-profile-links a:hover {
+          transform: translateY(-2px);
+          border-color: rgba(143, 220, 255, 0.4);
+          background: rgba(143, 220, 255, 0.08);
+        }
+
+        .github-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .github-stat-card,
+        .github-detail-item {
+          background: rgba(8, 12, 22, 0.56);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px;
+          padding: 1.2rem 1.25rem;
+        }
+
+        .github-stat-card span,
+        .github-detail-item span {
+          display: block;
+          color: #93a7d8;
+          font-size: 0.8rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+        }
+
+        .github-stat-card strong {
+          font-size: 2rem;
+          color: #ffffff;
+          line-height: 1;
+        }
+
+        .github-details-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1rem;
+        }
+
+        .github-detail-item strong {
+          font-size: 1.02rem;
+          color: #f5f7ff;
+        }
+
+        .github-contributions-wrap {
+          margin-top: 1.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .github-contributions-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .github-contributions-header h4 {
+          font-size: 1.2rem;
+          color: #ffffff;
+        }
+
+        .github-contributions-link {
+          color: #8fdcff;
+          text-decoration: none;
+          font-size: 0.95rem;
+        }
+
+        .github-contributions-card {
+          overflow-x: auto;
+          padding: 1rem;
+          border-radius: 22px;
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          background: rgba(8, 12, 22, 0.62);
+        }
+
+        .github-contributions-image {
+          display: block;
+          min-width: 760px;
+          width: 100%;
+          height: auto;
+          filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
+        }
+
+        .github-contribution-legend {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+          gap: 0.75rem;
+          margin-top: 0.85rem;
+          color: #93a7d8;
+          font-size: 0.78rem;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+        }
+
+        .github-legend-scale {
+          display: inline-grid;
+          grid-template-columns: repeat(5, 12px);
+          gap: 4px;
+        }
+
+        .github-legend-scale span {
+          width: 12px;
+          height: 12px;
+          border-radius: 3px;
+          border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .github-legend-scale span:nth-child(1) {
+          background: #161b22;
+        }
+
+        .github-legend-scale span:nth-child(2) {
+          background: #0e4429;
+        }
+
+        .github-legend-scale span:nth-child(3) {
+          background: #006d32;
+        }
+
+        .github-legend-scale span:nth-child(4) {
+          background: #26a641;
+        }
+
+        .github-legend-scale span:nth-child(5) {
+          background: #39d353;
+        }
+
+        /* LinkedIn Snapshot */
+        .linkedin-analytics-section {
+          padding-top: 0;
+        }
+
+        .linkedin-analytics-card {
+          background:
+            radial-gradient(420px 180px at 100% 0%, rgba(10, 102, 194, 0.22), transparent 65%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 28px;
+          padding: 2rem;
+          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
+          backdrop-filter: blur(18px);
+          -webkit-backdrop-filter: blur(18px);
+        }
+
+        .linkedin-profile-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          gap: 1.5rem;
+          margin-bottom: 1.75rem;
+        }
+
+        .linkedin-profile-meta {
+          display: flex;
+          gap: 1.25rem;
+          align-items: center;
+        }
+
+        .linkedin-avatar {
+          width: 84px;
+          height: 84px;
+          border-radius: 24px;
+          object-fit: cover;
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+        }
+
+        .linkedin-kicker {
+          color: #70b7ff;
+          font-size: 0.78rem;
+          text-transform: uppercase;
+          letter-spacing: 0.14em;
+          margin-bottom: 0.45rem;
+        }
+
+        .linkedin-profile-meta h3 {
+          font-size: 2rem;
+          margin-bottom: 0.3rem;
+          color: #ffffff;
+        }
+
+        .linkedin-headline {
+          color: #d9e8ff;
+          margin-bottom: 0.45rem;
+        }
+
+        .linkedin-summary {
+          color: #b8c4e9;
+          max-width: 580px;
+        }
+
+        .linkedin-profile-links {
+          display: flex;
+          gap: 0.8rem;
+          flex-wrap: wrap;
+          justify-content: flex-end;
+        }
+
+        .linkedin-profile-links a {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0.8rem 1.15rem;
+          border-radius: 999px;
+          color: #f6fbff;
+          text-decoration: none;
+          border: 1px solid rgba(112, 183, 255, 0.28);
+          background: rgba(10, 102, 194, 0.14);
+          transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .linkedin-profile-links a:hover {
+          transform: translateY(-2px);
+          border-color: rgba(112, 183, 255, 0.45);
+          background: rgba(10, 102, 194, 0.2);
+        }
+
+        .linkedin-stats-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        .linkedin-stat-card,
+        .linkedin-detail-item {
+          background: rgba(8, 12, 22, 0.56);
+          border: 1px solid rgba(255, 255, 255, 0.08);
+          border-radius: 20px;
+          padding: 1.2rem 1.25rem;
+        }
+
+        .linkedin-stat-card span,
+        .linkedin-detail-item span {
+          display: block;
+          color: #9db8e9;
+          font-size: 0.8rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 0.5rem;
+        }
+
+        .linkedin-stat-card strong {
+          display: block;
+          font-size: 2rem;
+          color: #ffffff;
+          line-height: 1;
+          margin-bottom: 0.55rem;
+        }
+
+        .linkedin-stat-card p,
+        .linkedin-detail-item strong {
+          color: #c5d4f2;
+          font-size: 0.96rem;
+          line-height: 1.45;
+        }
+
+        .linkedin-details-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 1rem;
+        }
+
         /* Footer */
         .footer {
           background: rgba(255, 255, 255, 0.02);
@@ -1163,6 +1618,42 @@ export default function Portfolio() {
             grid-template-columns: 1fr;
           }
 
+          .github-profile-header {
+            flex-direction: column;
+          }
+
+          .github-profile-header,
+          .github-profile-links,
+          .linkedin-profile-header,
+          .linkedin-profile-links {
+            justify-content: flex-start;
+          }
+
+          .github-profile-meta,
+          .linkedin-profile-meta {
+            align-items: flex-start;
+          }
+
+          .github-stats-grid,
+          .github-details-grid,
+          .linkedin-stats-grid,
+          .linkedin-details-grid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .presence-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .github-contributions-header {
+            flex-direction: column;
+            align-items: flex-start;
+          }
+
+          .linkedin-profile-header {
+            flex-direction: column;
+          }
+
           .form-row {
             grid-template-columns: 1fr;
           }
@@ -1175,6 +1666,42 @@ export default function Portfolio() {
           .profile-photo {
             width: 100%;
             height: 100%;
+          }
+
+          .github-analytics-card {
+            padding: 1.35rem;
+            border-radius: 22px;
+          }
+
+          .github-profile-meta,
+          .linkedin-profile-meta {
+            flex-direction: column;
+          }
+
+          .github-avatar,
+          .linkedin-avatar {
+            width: 72px;
+            height: 72px;
+          }
+
+          .github-stats-grid,
+          .github-details-grid,
+          .linkedin-stats-grid,
+          .linkedin-details-grid {
+            grid-template-columns: 1fr;
+          }
+
+          .presence-section {
+            padding-top: 1rem;
+          }
+
+          .github-contributions-card {
+            padding: 0.85rem;
+          }
+
+          .linkedin-analytics-card {
+            padding: 1.35rem;
+            border-radius: 22px;
           }
         }
       `}</style>
@@ -1365,11 +1892,12 @@ export default function Portfolio() {
                       className="project-video"
                       muted
                       loop
+                      playsInline
                       preload="metadata"
                       crossOrigin="anonymous"
                       suppressHydrationWarning
                     >
-                      <source src="/garden-video.mp4" type="video/mp4" />
+                      <source src="/VG Video.mp4" type="video/mp4" />
                       Your browser does not support the video tag.
                     </video>
                     <div id="garden-emoji" className="project-emoji">GDN</div>
@@ -1741,6 +2269,170 @@ export default function Portfolio() {
         </div>
       </section>
 
+      <section id="presence" className="section presence-section">
+        <div className="container">
+          <div className="presence-grid">
+            <div className="github-analytics-card">
+              {githubStatus === "loading" && (
+                <div className="github-state-card">
+                  <p>Loading GitHub analytics...</p>
+                </div>
+              )}
+
+              {githubStatus === "error" && (
+                <div className="github-state-card error">
+                  <p>GitHub analytics are temporarily unavailable. Please try again in a moment.</p>
+                </div>
+              )}
+
+              {githubStatus === "ready" && githubProfile && (
+                <>
+                  <div className="github-profile-header">
+                    <div className="github-profile-meta">
+                      <img
+                        src={githubProfile.avatar_url || "/placeholder-user.jpg"}
+                        alt={`${githubProfile.login} avatar`}
+                        className="github-avatar"
+                      />
+                      <div>
+                        <p className="github-kicker">Public Profile Snapshot</p>
+                        <h3>{githubProfile.login}</h3>
+                        <p className="github-bio">{githubProfile.bio || "Building full-stack and AI-driven products."}</p>
+                      </div>
+                    </div>
+                    <div className="github-profile-links">
+                      <a href={githubProfile.html_url} target="_blank" rel="noopener noreferrer">
+                        View GitHub
+                      </a>
+                      {githubProfile.blog ? (
+                        <a href={githubProfile.blog} target="_blank" rel="noopener noreferrer">
+                          Portfolio Link
+                        </a>
+                      ) : null}
+                    </div>
+                  </div>
+
+                  <div className="github-stats-grid">
+                    <div className="github-stat-card">
+                      <span>Public Repos</span>
+                      <strong>{githubProfile.public_repos}</strong>
+                    </div>
+                    <div className="github-stat-card">
+                      <span>Followers</span>
+                      <strong>{githubProfile.followers}</strong>
+                    </div>
+                    <div className="github-stat-card">
+                      <span>Following</span>
+                      <strong>{githubProfile.following}</strong>
+                    </div>
+                    <div className="github-stat-card">
+                      <span>Public Gists</span>
+                      <strong>{githubProfile.public_gists}</strong>
+                    </div>
+                  </div>
+
+                  <div className="github-details-grid">
+                    <div className="github-detail-item">
+                      <span>Location</span>
+                      <strong>{githubProfile.location || "Not specified"}</strong>
+                    </div>
+                    <div className="github-detail-item">
+                      <span>Joined GitHub</span>
+                      <strong>{formatGithubDate(githubProfile.created_at)}</strong>
+                    </div>
+                    <div className="github-detail-item">
+                      <span>Last Updated</span>
+                      <strong>{formatGithubDate(githubProfile.updated_at)}</strong>
+                    </div>
+                  </div>
+
+                  <div className="github-contributions-wrap">
+                    <div className="github-contributions-header">
+                      <div>
+                        <p className="github-kicker">Contribution Activity</p>
+                        <h4>Past 12 months</h4>
+                      </div>
+                      <a
+                        href={githubProfile.html_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="github-contributions-link"
+                      >
+                        Open on GitHub
+                      </a>
+                    </div>
+
+                    <div className="github-contributions-card">
+                      <img
+                        className="github-contributions-image"
+                        src={`https://ghchart.rshah.org/409ba5/${githubProfile.login}`}
+                        alt={`${githubProfile.login} contribution chart`}
+                        loading="lazy"
+                      />
+                    </div>
+
+                    <div className="github-contribution-legend">
+                      <span>Less</span>
+                      <div className="github-legend-scale" aria-hidden="true">
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                        <span />
+                      </div>
+                      <span>More</span>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="linkedin-analytics-card">
+              <div className="linkedin-profile-header">
+                <div className="linkedin-profile-meta">
+                  <img
+                    src="/hitesh-profile.jpg"
+                    alt={`${linkedInProfile.name} profile`}
+                    className="linkedin-avatar"
+                  />
+                  <div>
+                    <p className="linkedin-kicker">Latest LinkedIn Snapshot</p>
+                    <h3>{linkedInProfile.name}</h3>
+                    <p className="linkedin-headline">{linkedInProfile.headline}</p>
+                    <p className="linkedin-summary">{linkedInProfile.summary}</p>
+                  </div>
+                </div>
+
+                <div className="linkedin-profile-links">
+                  <a href={linkedInProfile.url} target="_blank" rel="noopener noreferrer">
+                    View LinkedIn
+                  </a>
+                </div>
+              </div>
+
+              <div className="linkedin-stats-grid">
+                {linkedInProfile.analytics.map((item) => (
+                  <div key={item.label} className="linkedin-stat-card">
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                    <p>{item.detail}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="linkedin-details-grid">
+                {linkedInProfile.highlights.map((item) => (
+                  <div key={item.label} className="linkedin-detail-item">
+                    <span>{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="footer">
         <div className="footer-content">
@@ -1778,6 +2470,7 @@ export default function Portfolio() {
           </p>
         </div>
       </footer>
+      <AssistantContainer activeSection={activeSection} onNavigate={scrollToSection} />
     </div>
   )
 }
