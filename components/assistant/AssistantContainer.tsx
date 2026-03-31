@@ -16,7 +16,7 @@ const sectionPrompts: Record<string, string> = {
   projects: "This section shows my projects \u{1F680}",
   about: "Here's a quick intro about me.",
   experience: "This section covers my hands-on experience and leadership work.",
-  presence: "This area shows GitHub and LinkedIn profile snapshots side by side.",
+  presence: "This area shows GitHub and LinkedIn cards side by side.",
   contact: "Want to collaborate? I can point you to the fastest way to reach out.",
 }
 
@@ -54,7 +54,7 @@ function createAssistantReply(input: string, activeSection: string) {
     normalized.includes("analytics")
   ) {
     return {
-      content: "The professional presence section shows GitHub and LinkedIn cards side by side, including repo activity and profile snapshots.",
+      content: "The professional presence section shows GitHub and LinkedIn cards side by side, including repo activity and profile details.",
       navigateTo: "presence",
     }
   }

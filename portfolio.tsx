@@ -27,8 +27,6 @@ const linkedInProfile = {
   name: "Hitesh Surya Thejaswi M",
   headline: "Software Engineer | Full Stack | AI/ML | Data Scientist",
   location: "Bengaluru, Karnataka, India",
-  summary:
-    "Latest LinkedIn snapshot styled for the portfolio. Values are manually mirrored from the profile analytics view.",
   analytics: [
     { label: "Profile viewers", value: "168", detail: "Past 90 days" },
     { label: "Post impressions", value: "119", detail: "84.9% past 7 days" },
@@ -37,7 +35,6 @@ const linkedInProfile = {
   highlights: [
     { label: "Location", value: "Bengaluru, Karnataka, India" },
     { label: "Profile Handle", value: "hitesh-surya-b1119a342" },
-    { label: "Snapshot Mode", value: "Latest LinkedIn snapshot" },
   ],
 }
 
@@ -1154,21 +1151,39 @@ export default function Portfolio() {
 
         .presence-grid {
           display: grid;
-          grid-template-columns: minmax(0, 1.28fr) minmax(0, 1fr);
-          gap: 1.25rem;
-          align-items: start;
+          grid-template-columns: repeat(2, minmax(0, 560px));
+          justify-content: center;
+          align-items: center;
+          gap: 1.75rem;
+          max-width: 1160px;
+          margin: 5rem auto;
         }
 
-        .github-analytics-card {
+        .github-analytics-card,
+        .linkedin-analytics-card {
           background:
             radial-gradient(420px 180px at 0% 0%, rgba(111, 232, 255, 0.1), transparent 65%),
             linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
           border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 28px;
-          padding: 2rem;
+          border-radius: 14px;
+          width: min(100%, 560px);
+          min-height: 520px;
+          padding: 1.125rem;
           box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          justify-self: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .github-analytics-card:hover,
+        .linkedin-analytics-card:hover {
+          transform: translateY(-6px) scale(1.02);
+          border-color: rgba(255, 255, 255, 0.14);
+          box-shadow: 0 36px 96px rgba(0, 0, 0, 0.36);
         }
 
         .github-state-card {
@@ -1193,20 +1208,20 @@ export default function Portfolio() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          gap: 1.5rem;
-          margin-bottom: 1.75rem;
+          gap: 1rem;
+          margin-bottom: 0.85rem;
         }
 
         .github-profile-meta {
           display: flex;
-          gap: 1.25rem;
+          gap: 1rem;
           align-items: center;
         }
 
         .github-avatar {
-          width: 84px;
-          height: 84px;
-          border-radius: 24px;
+          width: 64px;
+          height: 64px;
+          border-radius: 20px;
           object-fit: cover;
           border: 1px solid rgba(255, 255, 255, 0.12);
           box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
@@ -1217,18 +1232,21 @@ export default function Portfolio() {
           font-size: 0.78rem;
           text-transform: uppercase;
           letter-spacing: 0.14em;
-          margin-bottom: 0.45rem;
+          margin-bottom: 0.3rem;
         }
 
         .github-profile-meta h3 {
-          font-size: 2rem;
-          margin-bottom: 0.45rem;
+          font-size: 1.25rem;
+          margin-bottom: 0.2rem;
           color: #ffffff;
         }
 
         .github-bio {
           color: #b8c4e9;
-          max-width: 520px;
+          max-width: 360px;
+          font-size: 0.8125rem;
+          opacity: 0.8;
+          line-height: 1.5;
           white-space: pre-line;
         }
 
@@ -1243,12 +1261,13 @@ export default function Portfolio() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0.8rem 1.15rem;
+          padding: 0.68rem 0.95rem;
           border-radius: 999px;
           color: #f6fbff;
           text-decoration: none;
           border: 1px solid rgba(143, 220, 255, 0.22);
           background: rgba(255, 255, 255, 0.04);
+          font-size: 0.9rem;
           transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
         }
 
@@ -1261,8 +1280,8 @@ export default function Portfolio() {
         .github-stats-grid {
           display: grid;
           grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 1rem;
-          margin-bottom: 1rem;
+          gap: 0.75rem;
+          margin-bottom: 0.75rem;
         }
 
         .github-stat-card,
@@ -1270,7 +1289,7 @@ export default function Portfolio() {
           background: rgba(8, 12, 22, 0.56);
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 20px;
-          padding: 1.2rem 1.25rem;
+          padding: 0.9rem;
         }
 
         .github-stat-card span,
@@ -1280,11 +1299,11 @@ export default function Portfolio() {
           font-size: 0.8rem;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.35rem;
         }
 
         .github-stat-card strong {
-          font-size: 2rem;
+          font-size: 1.4rem;
           color: #ffffff;
           line-height: 1;
         }
@@ -1292,17 +1311,17 @@ export default function Portfolio() {
         .github-details-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 1rem;
+          gap: 0.75rem;
         }
 
         .github-detail-item strong {
-          font-size: 1.02rem;
+          font-size: 0.95rem;
           color: #f5f7ff;
         }
 
         .github-contributions-wrap {
-          margin-top: 1.5rem;
-          padding-top: 1.5rem;
+          margin-top: 0.95rem;
+          padding-top: 0.95rem;
           border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
@@ -1311,33 +1330,37 @@ export default function Portfolio() {
           justify-content: space-between;
           align-items: center;
           gap: 1rem;
-          margin-bottom: 1rem;
+          margin-bottom: 0.7rem;
         }
 
         .github-contributions-header h4 {
-          font-size: 1.2rem;
+          font-size: 1.05rem;
           color: #ffffff;
         }
 
         .github-contributions-link {
           color: #8fdcff;
           text-decoration: none;
-          font-size: 0.95rem;
+          font-size: 0.88rem;
         }
 
         .github-contributions-card {
-          overflow-x: auto;
-          padding: 1rem;
-          border-radius: 22px;
+          overflow: hidden;
+          padding: 0.6rem;
+          border-radius: 18px;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(8, 12, 22, 0.62);
         }
 
         .github-contributions-image {
           display: block;
-          min-width: 760px;
           width: 100%;
           height: auto;
+          transform: scale(0.8);
+          transform-origin: top left;
+          width: 124%;
+          max-width: none;
+          margin-bottom: -1.8rem;
           filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.22));
         }
 
@@ -1345,10 +1368,10 @@ export default function Portfolio() {
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          gap: 0.75rem;
-          margin-top: 0.85rem;
+          gap: 0.6rem;
+          margin-top: 0.55rem;
           color: #93a7d8;
-          font-size: 0.78rem;
+          font-size: 0.72rem;
           letter-spacing: 0.06em;
           text-transform: uppercase;
         }
@@ -1395,32 +1418,26 @@ export default function Portfolio() {
           background:
             radial-gradient(420px 180px at 100% 0%, rgba(10, 102, 194, 0.22), transparent 65%),
             linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.03));
-          border: 1px solid rgba(255, 255, 255, 0.08);
-          border-radius: 28px;
-          padding: 2rem;
-          box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32);
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
         }
 
         .linkedin-profile-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          gap: 1.5rem;
-          margin-bottom: 1.75rem;
+          gap: 1rem;
+          margin-bottom: 1.1rem;
         }
 
         .linkedin-profile-meta {
           display: flex;
-          gap: 1.25rem;
+          gap: 1rem;
           align-items: center;
         }
 
         .linkedin-avatar {
-          width: 84px;
-          height: 84px;
-          border-radius: 24px;
+          width: 64px;
+          height: 64px;
+          border-radius: 20px;
           object-fit: cover;
           border: 1px solid rgba(255, 255, 255, 0.12);
           box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
@@ -1435,7 +1452,7 @@ export default function Portfolio() {
         }
 
         .linkedin-profile-meta h3 {
-          font-size: 2rem;
+          font-size: 1.25rem;
           margin-bottom: 0.3rem;
           color: #ffffff;
         }
@@ -1443,11 +1460,16 @@ export default function Portfolio() {
         .linkedin-headline {
           color: #d9e8ff;
           margin-bottom: 0.45rem;
+          font-size: 0.8125rem;
+          opacity: 0.8;
         }
 
         .linkedin-summary {
           color: #b8c4e9;
-          max-width: 580px;
+          max-width: 360px;
+          font-size: 0.8125rem;
+          opacity: 0.8;
+          line-height: 1.5;
         }
 
         .linkedin-profile-links {
@@ -1461,12 +1483,13 @@ export default function Portfolio() {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          padding: 0.8rem 1.15rem;
+          padding: 0.68rem 0.95rem;
           border-radius: 999px;
           color: #f6fbff;
           text-decoration: none;
           border: 1px solid rgba(112, 183, 255, 0.28);
           background: rgba(10, 102, 194, 0.14);
+          font-size: 0.9rem;
           transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
         }
 
@@ -1479,7 +1502,7 @@ export default function Portfolio() {
         .linkedin-stats-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 1rem;
+          gap: 0.75rem;
           margin-bottom: 1rem;
         }
 
@@ -1488,7 +1511,7 @@ export default function Portfolio() {
           background: rgba(8, 12, 22, 0.56);
           border: 1px solid rgba(255, 255, 255, 0.08);
           border-radius: 20px;
-          padding: 1.2rem 1.25rem;
+          padding: 1rem;
         }
 
         .linkedin-stat-card span,
@@ -1503,7 +1526,7 @@ export default function Portfolio() {
 
         .linkedin-stat-card strong {
           display: block;
-          font-size: 2rem;
+          font-size: 1.55rem;
           color: #ffffff;
           line-height: 1;
           margin-bottom: 0.55rem;
@@ -1512,14 +1535,14 @@ export default function Portfolio() {
         .linkedin-stat-card p,
         .linkedin-detail-item strong {
           color: #c5d4f2;
-          font-size: 0.96rem;
+          font-size: 0.92rem;
           line-height: 1.45;
         }
 
         .linkedin-details-grid {
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 1rem;
+          gap: 0.75rem;
         }
 
         /* Footer */
@@ -1643,6 +1666,7 @@ export default function Portfolio() {
 
           .presence-grid {
             grid-template-columns: 1fr;
+            max-width: 560px;
           }
 
           .github-contributions-header {
@@ -1690,6 +1714,7 @@ export default function Portfolio() {
           .linkedin-details-grid {
             grid-template-columns: 1fr;
           }
+
 
           .presence-section {
             padding-top: 1rem;
@@ -2289,13 +2314,8 @@ export default function Portfolio() {
                 <>
                   <div className="github-profile-header">
                     <div className="github-profile-meta">
-                      <img
-                        src={githubProfile.avatar_url || "/placeholder-user.jpg"}
-                        alt={`${githubProfile.login} avatar`}
-                        className="github-avatar"
-                      />
                       <div>
-                        <p className="github-kicker">Public Profile Snapshot</p>
+                        <p className="github-kicker">GitHub</p>
                         <h3>{githubProfile.login}</h3>
                         <p className="github-bio">{githubProfile.bio || "Building full-stack and AI-driven products."}</p>
                       </div>
@@ -2304,11 +2324,6 @@ export default function Portfolio() {
                       <a href={githubProfile.html_url} target="_blank" rel="noopener noreferrer">
                         View GitHub
                       </a>
-                      {githubProfile.blog ? (
-                        <a href={githubProfile.blog} target="_blank" rel="noopener noreferrer">
-                          Portfolio Link
-                        </a>
-                      ) : null}
                     </div>
                   </div>
 
@@ -2390,13 +2405,8 @@ export default function Portfolio() {
             <div className="linkedin-analytics-card">
               <div className="linkedin-profile-header">
                 <div className="linkedin-profile-meta">
-                  <img
-                    src="/hitesh-profile.jpg"
-                    alt={`${linkedInProfile.name} profile`}
-                    className="linkedin-avatar"
-                  />
                   <div>
-                    <p className="linkedin-kicker">Latest LinkedIn Snapshot</p>
+                    <p className="linkedin-kicker">LinkedIn</p>
                     <h3>{linkedInProfile.name}</h3>
                     <p className="linkedin-headline">{linkedInProfile.headline}</p>
                     <p className="linkedin-summary">{linkedInProfile.summary}</p>

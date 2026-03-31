@@ -1,7 +1,7 @@
 .assistantRoot {
   --assistant-size: clamp(104px, 14vw, 168px);
-  --assistant-offset-x: clamp(16px, 2vw, 32px);
-  --assistant-offset-y: clamp(18px, 2.5vw, 34px);
+  --assistant-offset-x: clamp(10px, 1.5vw, 20px);
+  --assistant-offset-y: clamp(10px, 1.5vw, 20px);
   position: fixed;
   right: var(--assistant-offset-x);
   bottom: var(--assistant-offset-y);
