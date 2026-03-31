@@ -1849,7 +1849,6 @@ export default function Portfolio() {
                 <span className="skill-tag">CSS</span>
                 <span className="skill-tag">Next.js</span>
                 <span className="skill-tag">Three.js</span>
-                <span className="skill-tag">VS Code</span>
               </div>
             </div>
             <div className="skill-category">
