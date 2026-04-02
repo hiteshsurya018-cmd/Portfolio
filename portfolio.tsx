@@ -5,6 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import emailjs from "@emailjs/browser"
 import AssistantContainer from "./components/assistant/AssistantContainer"
+import GitHubContributionChart from "./components/GitHubContributionChart"
 
 type GitHubProfile = {
   login: string
@@ -19,6 +20,25 @@ type GitHubProfile = {
   following: number
   created_at: string
   updated_at: string
+}
+
+const githubUsername = "hiteshsurya018-cmd"
+const emailAddress = "hiteshsurya018@gmail.com"
+const emailHref = `mailto:${emailAddress}?subject=${encodeURIComponent("Portfolio Inquiry")}`
+
+const fallbackGithubProfile: GitHubProfile = {
+  login: githubUsername,
+  avatar_url: "",
+  html_url: `https://github.com/${githubUsername}`,
+  blog: null,
+  location: "Bengaluru, Karnataka, India",
+  bio: "Building full-stack and AI-driven products.",
+  public_repos: 0,
+  public_gists: 0,
+  followers: 0,
+  following: 0,
+  created_at: "2024-01-01T00:00:00Z",
+  updated_at: new Date().toISOString(),
 }
 
 const linkedInProfile = {
@@ -59,7 +79,7 @@ export default function Portfolio() {
   })
 
   const [activeSection, setActiveSection] = useState("home")
-  const [githubProfile, setGithubProfile] = useState<GitHubProfile | null>(null)
+  const [githubProfile, setGithubProfile] = useState<GitHubProfile>(fallbackGithubProfile)
   const [githubStatus, setGithubStatus] = useState<"loading" | "ready" | "error">("loading")
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -188,7 +208,7 @@ export default function Portfolio() {
     const loadGithubProfile = async () => {
       try {
         setGithubStatus("loading")
-        const response = await fetch("https://api.github.com/users/hiteshsurya018-cmd", {
+        const response = await fetch(`https://api.github.com/users/${githubUsername}`, {
           signal: controller.signal,
           headers: {
             Accept: "application/vnd.github+json",
@@ -205,7 +225,8 @@ export default function Portfolio() {
       } catch (error) {
         if (controller.signal.aborted) return
         console.error("GitHub profile fetch failed:", error)
-        setGithubStatus("error")
+        setGithubProfile(fallbackGithubProfile)
+        setGithubStatus("ready")
       }
     }
 
@@ -1809,7 +1830,7 @@ export default function Portfolio() {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
               </a>
-              <a href="mailto:hiteshsurya018@gmail.com">
+              <a href={emailHref} aria-label="Email Hitesh Surya">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 10.724l9.615-6.903h.749c.904 0 1.636.732 1.636 1.636z" />
                 </svg>
@@ -2364,7 +2385,7 @@ export default function Portfolio() {
                     <div className="github-contributions-header">
                       <div>
                         <p className="github-kicker">Contribution Activity</p>
-                        <h4>Past 12 months</h4>
+                        <h4>Past 6 months</h4>
                       </div>
                       <a
                         href={githubProfile.html_url}
@@ -2377,12 +2398,7 @@ export default function Portfolio() {
                     </div>
 
                     <div className="github-contributions-card">
-                      <img
-                        className="github-contributions-image"
-                        src={`https://ghchart.rshah.org/409ba5/${githubProfile.login}`}
-                        alt={`${githubProfile.login} contribution chart`}
-                        loading="lazy"
-                      />
+                      <GitHubContributionChart username={githubProfile.login} months={6} />
                     </div>
 
                     <div className="github-contribution-legend">
@@ -2465,7 +2481,7 @@ export default function Portfolio() {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
               </a>
-              <a href="mailto:hiteshsurya018@gmail.com">
+              <a href={emailHref} aria-label="Email Hitesh Surya">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-.904.732-1.636 1.636-1.636h.749L12 10.724l9.615-6.903h.749c.904 0 1.636.732 1.636 1.636z" />
                 </svg>
