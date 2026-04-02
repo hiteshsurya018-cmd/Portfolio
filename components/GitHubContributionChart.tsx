@@ -80,7 +80,7 @@ function detailLabel(detail: ContributionDetail) {
 
 export default function GitHubContributionChart({ username, months = 6 }: Props) {
   const [data, setData] = useState<ContributionResponse | null>(null)
-  const [status, setStatus] = useState<"loading" | "ready" | "error">("loading")
+  const [status, setStatus] = useState<"loading" | "ready" | "fallback">("loading")
   const [selectedDate, setSelectedDate] = useState<string | null>(null)
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export default function GitHubContributionChart({ username, months = 6 }: Props)
       } catch (error) {
         if (controller.signal.aborted) return
         console.error("Detailed GitHub contributions fetch failed:", error)
-        setStatus("error")
+        setStatus("fallback")
       }
     }
 
@@ -152,10 +152,19 @@ export default function GitHubContributionChart({ username, months = 6 }: Props)
     )
   }
 
-  if (status === "error" || !data || !baseWeekDate) {
+  if (status === "fallback" || !data || !baseWeekDate) {
     return (
-      <div className="github-state-card error">
-        <p>Detailed contribution activity is unavailable right now.</p>
+      <div className={styles.fallbackShell}>
+        <img
+          className={styles.fallbackImage}
+          src={`/api/github-contributions?username=${encodeURIComponent(username)}&months=${months}`}
+          alt={`${username} contribution chart`}
+          loading="lazy"
+        />
+        <p className={styles.fallbackNote}>
+          Showing the contribution chart without per-day details. Add `GITHUB_TOKEN` in Vercel project environment
+          variables to enable clickable activity.
+        </p>
       </div>
     )
   }

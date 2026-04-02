@@ -176,6 +176,26 @@
   font-size: 0.88rem;
 }
 
+.fallbackShell {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.fallbackImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: rgba(5, 10, 18, 0.54);
+}
+
+.fallbackNote {
+  margin: 0;
+  color: #93a7d8;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
 @media (max-width: 768px) {
   .shell {
     --chart-label-gutter: 16px;
