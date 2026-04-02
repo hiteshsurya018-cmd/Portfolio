@@ -9,6 +9,11 @@ const GRAPH_STEP = GRAPH_CELL_SIZE + GRAPH_GAP
 const GRAPH_LABEL_GUTTER = 28
 const GRAPH_MONTHS_Y = 16
 const GRAPH_GRID_Y = 28
+const INVALID_SVG_MARKERS = [
+  "Detailed contribution activity is unavailable right now.",
+  "Detailed contribution activity is unavailable.",
+  "Contribution activity is currently unavailable",
+]
 
 const REQUEST_HEADERS = {
   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36",
@@ -284,6 +289,12 @@ function renderContributionSvg(username: string, calendar: ContributionCalendar)
 </svg>`
 }
 
+function isUsableContributionSvg(svg: string) {
+  if (!svg.includes("<svg")) return false
+
+  return !INVALID_SVG_MARKERS.some((marker) => svg.includes(marker))
+}
+
 async function fetchContributionDataFromGraphql(username: string, from: string, to: string) {
   const token = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT
   if (!token) return null
@@ -414,7 +425,7 @@ async function fetchContributionSvgFromGitHub(username: string, from: string, to
   if (!response.ok) return null
 
   const svg = await response.text()
-  return svg.includes("<svg") ? svg : null
+  return isUsableContributionSvg(svg) ? svg : null
 }
 
 async function fetchContributionSvgFromFallback(username: string) {
@@ -431,7 +442,7 @@ async function fetchContributionSvgFromFallback(username: string) {
   if (!response.ok) return null
 
   const svg = await response.text()
-  return svg.includes("<svg") ? svg : null
+  return isUsableContributionSvg(svg) ? svg : null
 }
 
 async function fetchContributionSvg(username: string, from: string, to: string) {
