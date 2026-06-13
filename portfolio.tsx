@@ -715,6 +715,8 @@ export default function Portfolio() {
           text-align: left;
           color: #cdd7f3;
           font-weight: 600;
+          line-height: 1.35;
+          overflow-wrap: anywhere;
           cursor: pointer;
           transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -1918,7 +1920,7 @@ export default function Portfolio() {
                 className={`project-item${selectedProject === "chatbot" ? " active" : ""}`}
                 onClick={() => setSelectedProject("chatbot")}
               >
-                AI Medical Chatbot
+                AI-Medical-Orchestration-Triage-System
               </button>
               <button
                 className={`project-item${selectedProject === "exchange" ? " active" : ""}`}
@@ -1973,24 +1975,39 @@ export default function Portfolio() {
 
               {selectedProject === "chatbot" && (
                 <div className="project-card">
-                  <div className="project-image">AI</div>
+                  <div className="project-image">DOCQ</div>
                   <div className="project-content">
-                    <h3>AI Medical Chatbot</h3>
+                    <h3>AI-Medical-Orchestration-Triage-System</h3>
                     <div className="project-details">
                       <p>
-                        Created an offline-friendly NLP chatbot trained on a 5,000+ entry medical dataset, delivering 90%+
-                        intent classification accuracy for symptom-based advice without third-party APIs. Demonstrated
-                        practical AI deployment skills.
+                        Built a Flask-based clinical orchestration system that moves patients from symptom intake through
+                        emergency triage, department routing, doctor matching, appointment scheduling, prescriptions, and
+                        follow-up workflows. The platform includes replayable workflow events, ML governance, observability,
+                        role-based workspaces, and integration-ready notification automation.
                       </p>
                       <div className="project-tech">
                         <span className="tech-tag">Python</span>
-                        <span className="tech-tag">NLP</span>
-                        <span className="tech-tag">Machine Learning</span>
-                        <span className="tech-tag">Medical Dataset</span>
+                        <span className="tech-tag">Flask</span>
+                        <span className="tech-tag">Scikit-learn</span>
+                        <span className="tech-tag">SQLAlchemy</span>
+                        <span className="tech-tag">Workflow Orchestration</span>
+                        <span className="tech-tag">Healthcare Triage</span>
                       </div>
                       <div className="project-links">
-                        <button>Live Demo</button>
-                        <button>Code</button>
+                        <a
+                          href="https://ai-medical-orchestration-triage-sys.vercel.app/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                        <a
+                          href="https://github.com/hiteshsurya018-cmd/AI-Medical-Orchestration-Triage-System"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Code
+                        </a>
                       </div>
                     </div>
                   </div>
