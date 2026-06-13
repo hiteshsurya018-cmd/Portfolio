@@ -143,7 +143,7 @@ export default function Portfolio() {
     }
   }
 
-  const [selectedProject, setSelectedProject] = useState("garden")
+  const [selectedProject, setSelectedProject] = useState("chatbot")
 
 
 
@@ -1911,12 +1911,6 @@ export default function Portfolio() {
           <div className="projects-grid">
             <div className="projects-list">
               <button
-                className={`project-item${selectedProject === "garden" ? " active" : ""}`}
-                onClick={() => setSelectedProject("garden")}
-              >
-                3D Virtual Garden Builder
-              </button>
-              <button
                 className={`project-item${selectedProject === "chatbot" ? " active" : ""}`}
                 onClick={() => setSelectedProject("chatbot")}
               >
@@ -1927,6 +1921,12 @@ export default function Portfolio() {
                 onClick={() => setSelectedProject("exchange")}
               >
                 Exchange Rate Predictor
+              </button>
+              <button
+                className={`project-item${selectedProject === "garden" ? " active" : ""}`}
+                onClick={() => setSelectedProject("garden")}
+              >
+                3D Virtual Garden Builder
               </button>
             </div>
 
